@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Javier Suarez — Buyer Flywheel</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #050508;
+  --surface: #0c0c14;
+  --surface-2: #121220;
+  --surface-3: #1a1a2a;
+  --border: rgba(255,255,255,0.05);
+  --border-h: rgba(255,255,255,0.1);
+  --text: #eaeaf2;
+  --text-dim: #72728c;
+  --text-muted: #3d3d55;
+  --accent: #00e5a0;
+  --accent-soft: rgba(0,229,160,0.07);
+  --accent-mid: rgba(0,229,160,0.15);
+  --accent-glow: rgba(0,229,160,0.3);
+  --gold: #ffd700;
+  --gold-soft: rgba(255,215,0,0.06);
+  --gold-mid: rgba(255,215,0,0.15);
+  --orange: #ff6b35;
+  --orange-soft: rgba(255,107,53,0.06);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::after {
+  content:'';
+  position:fixed;
+  inset:0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:9999;
+}
+
+.amb { position:fixed; border-radius:50%; filter:blur(180px); pointer-events:none; opacity:0.07; }
+.amb1 { width:500px; height:500px; background:var(--accent); top:25%; left:35%; }
+
+/* ── HEADER ── */
+.header {
+  position:relative; z-index:1;
+  padding: 44px 56px 28px;
+  border-bottom: 1px solid var(--border);
+}
+.h-tag {
+  font-family:'DM Mono',monospace;
+  font-size:10px; letter-spacing:4px; text-transform:uppercase;
+  color:var(--text-muted); margin-bottom:8px;
+}
+.h-title {
+  font-size: clamp(34px,5vw,60px);
+  font-weight:900; letter-spacing:-2px; line-height:1.05;
+  background: linear-gradient(140deg,#fff 20%,#666 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.h-sub {
+  font-size:16px; color:var(--text-dim); font-weight:300;
+  margin-top:8px; max-width:620px; line-height:1.65;
+}
+
+/* ── LAYOUT ── */
+.page { position:relative; z-index:1; }
+.section {
+  max-width:1060px; margin:0 auto;
+  padding: 56px 48px;
+}
+.section + .section { border-top: 1px solid var(--border); }
+
+.section-tag {
+  font-family:'DM Mono',monospace;
+  font-size:9px; letter-spacing:4px; text-transform:uppercase;
+  color:var(--text-muted); margin-bottom:24px;
+}
+
+/* ── FLYWHEEL SVG ── */
+.fw-center { display:flex; justify-content:center; }
+.fw-svg { width:100%; max-width:720px; }
+
+/* ── ARCHITECTURE GRID ── */
+.arch-grid {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 8px;
+}
+.arch-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 28px 24px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.arch-card:hover { border-color: var(--border-h); }
+.arch-card::before {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0; height:2px;
+}
+.arch-card.ac::before { background: linear-gradient(90deg,var(--accent),transparent); }
+.arch-card.gd::before { background: linear-gradient(90deg,var(--gold),transparent); }
+.arch-card.full { grid-column: 1 / -1; }
+
+.arch-label {
+  font-family:'DM Mono',monospace;
+  font-size:9px; letter-spacing:3px; text-transform:uppercase;
+  margin-bottom:10px;
+}
+.arch-label.green { color:var(--accent); }
+.arch-label.gold { color:var(--gold); }
+
+.arch-card h3 {
+  font-size:19px; font-weight:700; letter-spacing:-0.3px;
+  margin-bottom:8px;
+}
+.arch-card p {
+  font-size:14px; line-height:1.7; color:var(--text-dim); font-weight:300;
+}
+
+/* ── NODE ROWS ── */
+.node-row {
+  display:grid;
+  grid-template-columns: 48px 1fr;
+  gap:20px;
+  padding:28px 0;
+  border-bottom:1px solid var(--border);
+  align-items:start;
+}
+.node-row:first-of-type { border-top:1px solid var(--border); }
+
+.n-num {
+  width:42px; height:42px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'DM Mono',monospace; font-size:14px; font-weight:500;
+  flex-shrink:0; margin-top:1px;
+  background:var(--accent-soft); color:var(--accent);
+  border:1px solid var(--accent-mid);
+}
+
+.n-body h3 {
+  font-size:19px; font-weight:700; letter-spacing:-0.3px; margin-bottom:6px;
+}
+.n-body p {
+  font-size:14px; line-height:1.7; color:var(--text-dim); font-weight:300;
+}
+
+/* Causal arrow callout */
+.causal {
+  margin-top:14px;
+  padding:12px 16px;
+  background: var(--surface-2);
+  border-left:2px solid var(--accent);
+  border-radius:0 8px 8px 0;
+  font-size:13px; line-height:1.65; color:var(--text-dim); font-weight:300;
+}
+.causal strong { color:var(--accent); font-weight:500; }
+
+/* Sub-process pills */
+.sub-steps {
+  display:flex; flex-wrap:wrap; gap:6px; margin-top:12px;
+}
+.sub-step {
+  padding:4px 12px;
+  background:var(--surface-2);
+  border:1px solid var(--border);
+  border-radius:100px;
+  font-family:'DM Mono',monospace;
+  font-size:9px; letter-spacing:1px; text-transform:uppercase;
+  color:var(--text-dim);
+}
+
+/* Handoff tags */
+.tag {
+  display:inline-flex; align-items:center; gap:4px;
+  padding:4px 11px; border-radius:100px;
+  font-family:'DM Mono',monospace;
+  font-size:9px; letter-spacing:1px; text-transform:uppercase;
+  margin-top:12px; margin-right:5px;
+}
+.tag.reap { background:var(--gold-soft); color:var(--gold); }
+.tag.tdg { background:var(--accent-soft); color:var(--accent); }
+.tag.sg { background:var(--orange-soft); color:var(--orange); }
+
+/* ── BOTTOM GRID ── */
+.bottom-grid {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:20px;
+}
+.bot-card {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:24px 24px 20px;
+}
+.bot-card.full { grid-column:1/-1; }
+.bot-label {
+  font-family:'DM Mono',monospace;
+  font-size:9px; letter-spacing:3px; text-transform:uppercase;
+  color:var(--text-muted); margin-bottom:8px;
+}
+.bot-val {
+  font-size:14px; line-height:1.7; color:var(--text-dim); font-weight:300;
+}
+.bot-val strong { color:var(--text); font-weight:600; }
+
+/* ── RESPONSIVE ── */
+@media (max-width:768px) {
+  .header { padding:28px 20px; }
+  .section { padding:36px 20px; }
+  .arch-grid { grid-template-columns:1fr; }
+  .bottom-grid { grid-template-columns:1fr; }
+  .node-row { grid-template-columns:38px 1fr; gap:14px; }
+}
+</style>
+</head>
+<body>
+<div class="amb amb1"></div>
+
+<header class="header">
+  <div class="h-tag">Javier Suarez · Buyer Agency</div>
+  <h1 class="h-title">Buyer Flywheel</h1>
+  <p class="h-sub">Five nodes. Each step causes the next. The last step feeds the first with more energy than it started with. The loop compounds trust, track record, and deal flow with every rotation.</p>
+</header>
+
+<div class="page">
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SECTION 1: THE FLYWHEEL DIAGRAM             -->
+<!-- ════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-tag">The Loop</div>
+  <div class="fw-center">
+    <svg class="fw-svg" viewBox="0 0 720 720" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="soft"><feGaussianBlur stdDeviation="35"/></filter>
+        <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <path d="M0,0.5 L8,3.5 L0,6.5" fill="none" stroke="#00e5a0" stroke-width="1.5"/>
+        </marker>
+      </defs>
+
+      <!-- Background glow -->
+      <circle cx="360" cy="360" r="160" fill="#00e5a0" opacity="0.035" filter="url(#soft)"/>
+
+      <!-- Flywheel ring -->
+      <circle cx="360" cy="360" r="240" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="60"/>
+      <circle cx="360" cy="360" r="270" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+      <circle cx="360" cy="360" r="210" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+
+      <!--
+        5 nodes on r=240, center=360,360
+        Clockwise from top:
+        N1: -90°  → (360, 120)   — Educate & Position
+        N2: -18°  → (588, 286)   — Strategic Execution
+        N3:  54°  → (501, 554)   — Close Transaction
+        N4: 126°  → (219, 554)   — Post-Close Activation
+        N5: 198°  → (132, 286)   — Referrals & Repeat
+      -->
+
+      <!-- ── DIRECTIONAL ARCS ── -->
+      <!-- Thick accent arcs between nodes showing clockwise flow -->
+      <!-- N1 → N2 -->
+      <path d="M 400 125 A 240 240 0 0 1 580 275" fill="none" stroke="#00e5a0" stroke-width="3.5" opacity="0.3"/>
+      <!-- N2 → N3 -->
+      <path d="M 592 310 A 240 240 0 0 1 510 545" fill="none" stroke="#00e5a0" stroke-width="3.5" opacity="0.3"/>
+      <!-- N3 → N4 -->
+      <path d="M 480 565 A 240 240 0 0 1 240 565" fill="none" stroke="#00e5a0" stroke-width="3.5" opacity="0.3"/>
+      <!-- N4 → N5 -->
+      <path d="M 210 540 A 240 240 0 0 1 135 310" fill="none" stroke="#00e5a0" stroke-width="3.5" opacity="0.3"/>
+      <!-- N5 → N1 (the return — this is the reinforcing return) -->
+      <path d="M 140 270 A 240 240 0 0 1 320 125" fill="none" stroke="#00e5a0" stroke-width="4" opacity="0.45"/>
+
+      <!-- Directional chevrons on arcs -->
+      <g stroke="#00e5a0" stroke-width="1.5" fill="none" opacity="0.5">
+        <!-- 1→2 -->
+        <path d="M 500 190 l 10 8 l -8 9"/>
+        <!-- 2→3 -->
+        <path d="M 565 430 l -3 13 l -11 -1"/>
+        <!-- 3→4 -->
+        <path d="M 360 590 l -13 2 l 3 -12"/>
+        <!-- 4→5 -->
+        <path d="M 160 430 l -8 -10 l 12 -3"/>
+        <!-- 5→1 (stronger) -->
+        <path d="M 220 175 l 10 -8 l 3 12"/>
+        <path d="M 270 148 l 10 -6 l 2 12"/>
+      </g>
+
+      <!-- ── NODE CIRCLES ── -->
+
+      <!-- N1: Educate & Position — 12 o'clock -->
+      <circle cx="360" cy="120" r="42" fill="var(--surface)" stroke="#00e5a0" stroke-width="1.5"/>
+      <text x="360" y="113" text-anchor="middle" font-family="DM Mono" font-size="12" font-weight="500" fill="#00e5a0">01</text>
+      <text x="360" y="129" text-anchor="middle" font-family="Outfit" font-size="9" font-weight="500" fill="var(--text-dim)">EDUCATE &</text>
+      <text x="360" y="140" text-anchor="middle" font-family="Outfit" font-size="9" font-weight="500" fill="var(--text-dim)">POSITION</text>
+
+      <!-- N2: Strategic Execution — 2 o'clock -->
+      <circle cx="588" cy="286" r="42" fill="var(--surface)" stroke="#00e5a0" stroke-width="1.5"/>
+      <text x="588" y="279" text-anchor="middle" font-family="DM Mono" font-size="12" font-weight="500" fill="#00e5a0">02</text>
+      <text x="588" y="295" text-anchor="middle" font-family="Outfit" font-size="9" font-weight="500" fill="var(--text-dim)">STRATEGIC</text>
+      <text x="588" y="306" text-anchor="middle" font-family="Outfit" font-size="9" font-weight="500" fill="var(--text-dim)">EXECUTION</text>
+
+      <!-- N3: Close Transaction — 4 o'clock -->
+      <circle cx="501" cy="554" r="42" fill="var(--surface)" stroke="#00e5a0" stroke-width="1.5"/>
+      <text x="501" y="547" text-anchor="middle" font-family="DM Mono" font-size="12" font-weight="500" fill="#00e5a0">03</text>
+      <text x="501" y="563" text-anchor="middle" font-family="Outfit" font-size="9" font-weight="500" fill="var(--text-dim)">CLOSE</text>
+      <text x="501" y="574" text-anchor="middle" font-family="Outfit" font-size="9" font-weight="500" fill="var(--text-dim)">TRANSACTION</text>
+
+      <!-- N4: Post-Close Activation — 8 o'clock -->
+      <circle cx="219" cy="554" r="42" fill="var(--surface)" stroke="#00e5a0" stroke-width="1.5"/>
+      <text x="219" y="547" text-anchor="middle" font-family="DM Mono" font-size="12" font-weight="500" fill="#00e5a0">04</text>
+      <text x="219" y="563" text-anchor="middle" font-family="Outfit" font-size="9" font-weight="500" fill="var(--text-dim)">POST-CLOSE</text>
+      <text x="219" y="574" text-anchor="middle" font-family="Outfit" font-size="9" font-weight="500" fill="var(--text-dim)">ACTIVATION</text>
+
+      <!-- N5: Referrals, Reputation & Repeat — 10 o'clock -->
+      <circle cx="132" cy="286" r="42" fill="var(--surface)" stroke="#00e5a0" stroke-width="1.5"/>
+      <text x="132" y="279" text-anchor="middle" font-family="DM Mono" font-size="12" font-weight="500" fill="#00e5a0">05</text>
+      <text x="132" y="295" text-anchor="middle" font-family="Outfit" font-size="9" font-weight="500" fill="var(--text-dim)">REFERRALS &</text>
+      <text x="132" y="306" text-anchor="middle" font-family="Outfit" font-size="9" font-weight="500" fill="var(--text-dim)">REPEAT</text>
+
+      <!-- ── CENTER HUB ── -->
+      <circle cx="360" cy="360" r="68" fill="var(--surface)" stroke="rgba(0,229,160,0.25)" stroke-width="1.5"/>
+      <text x="360" y="347" text-anchor="middle" font-family="Outfit" font-weight="800" font-size="14" fill="#fff">JAVIER</text>
+      <text x="360" y="365" text-anchor="middle" font-family="Outfit" font-weight="800" font-size="14" fill="#fff">SUAREZ</text>
+      <text x="360" y="385" text-anchor="middle" font-family="DM Mono" font-size="7" fill="var(--text-muted)" letter-spacing="2.5">BUYER FLYWHEEL</text>
+
+      <!-- Reinforcing return label on the N5→N1 arc -->
+      <text x="175" y="168" font-family="DM Mono" font-size="7" fill="#00e5a0" opacity="0.55" letter-spacing="1.5" transform="rotate(-48,175,168)">RETURNS STRONGER</text>
+
+      <!-- Animated orbit dots -->
+      <circle r="4.5" fill="#00e5a0" opacity="0.85">
+        <animateMotion dur="12s" repeatCount="indefinite">
+          <mpath href="#orb"/>
+        </animateMotion>
+      </circle>
+      <circle r="3.5" fill="#00e5a0" opacity="0.4">
+        <animateMotion dur="12s" repeatCount="indefinite" begin="-6s">
+          <mpath href="#orb"/>
+        </animateMotion>
+      </circle>
+      <path id="orb" d="M 360 120 A 240 240 0 1 1 359.9 120" fill="none" stroke="none"/>
+
+      <!-- Pulse on N5→N1 return -->
+      <circle cx="360" cy="120" r="42" fill="none" stroke="#00e5a0" opacity="0">
+        <animate attributeName="r" values="42;58;42" dur="4s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.18;0;0.18" dur="4s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SECTION 2: CATALYST                         -->
+<!-- ════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-tag">Catalyst — What Starts the Flywheel Spinning</div>
+  <div class="arch-grid">
+    <div class="arch-card ac full">
+      <div class="arch-label green">Catalyst</div>
+      <h3>Someone Needs to Buy Real Estate</h3>
+      <p>The flywheel starts when a person with acquisition intent enters the ecosystem — through Suarez Global content, a referral from a past client, an introduction from REAP, or direct outreach. They have a question: "How do I buy a property strategically?" That question is the entry point. The catalyst is not Javier finding them — it is them finding the ecosystem because the ecosystem has earned the right to be found.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SECTION 3: THE FIVE NODES                   -->
+<!-- ════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-tag">Nodes — The Stages of the Loop</div>
+
+  <div class="node-row">
+    <div class="n-num">01</div>
+    <div class="n-body">
+      <h3>Educate & Position the Buyer</h3>
+      <p>This is the coaching-first approach that differentiates Javier from every other agent. Before a single property is viewed, the buyer's full financial picture is mapped, their life goals are understood, and they are positioned from strength. Most buyers discover they're in a stronger position than they assumed. This node produces an informed, confident, strategically positioned buyer — which directly causes the next node to execute faster and with fewer failures.</p>
+      <div class="sub-steps">
+        <span class="sub-step">01 · Inquiry & Capture</span>
+        <span class="sub-step">02 · Financial Checklist</span>
+        <span class="sub-step">03 · Buyer Consultation</span>
+      </div>
+      <div class="causal"><strong>Why this causes Node 2 →</strong> A positioned buyer makes faster, better decisions. Lenders pre-approve faster because the financial summary arrives warm. Fewer deals fall through because expectations are set and strategy is locked before the first showing.</div>
+    </div>
+  </div>
+
+  <div class="node-row">
+    <div class="n-num">02</div>
+    <div class="n-body">
+      <h3>Strategic Market Execution</h3>
+      <p>Market analyzed like operators — days on market, absorption rate, price per sqft, macro trends. Strategy track selected (first-time, investment-focused, or generational wealth). Lender matched and pre-approval secured. MLS alerts live, AI property tools active, showings scheduled, offers drafted in alignment with the strategy. Full negotiation on terms, price, and contingencies. This is where the educated buyer meets the market with precision.</p>
+      <div class="sub-steps">
+        <span class="sub-step">04 · Market Analysis</span>
+        <span class="sub-step">05 · Strategy Development</span>
+        <span class="sub-step">06 · Lender & Pre-Approval</span>
+        <span class="sub-step">07 · Search, Offers & Negotiate</span>
+      </div>
+      <div class="causal"><strong>Why this causes Node 3 →</strong> Strategic offers built on real data and aligned with a pre-approved, educated buyer win more often and fall through less. The coaching at Node 1 and the precision at Node 2 produce a close rate that compounds the flywheel's speed.</div>
+    </div>
+  </div>
+
+  <div class="node-row">
+    <div class="n-num">03</div>
+    <div class="n-body">
+      <h3>Close the Transaction</h3>
+      <p>Deal closes. Buyer owns a property. Commission is captured — and on internal ecosystem deals (TDG acquisitions, Freedom Launch dispositions), that commission stays inside the system instead of leaking to an outside agent. The close is not the end of the relationship. It is the moment the buyer has maximum trust, maximum real estate mindshare, and capital deployed — making them the warmest possible prospect for the next node.</p>
+      <div class="causal"><strong>Why this causes Node 4 →</strong> A buyer who just closed has demonstrated trust by transacting. They have capital deployed. They are in a real estate mindset. They are psychologically primed to go deeper — the activation sequence meets them at peak receptivity.</div>
+    </div>
+  </div>
+
+  <div class="node-row">
+    <div class="n-num">04</div>
+    <div class="n-body">
+      <h3>Post-Close Activation</h3>
+      <p>Every closed buyer enters a systematic sequence — not a one-off email, a real process. They are introduced to REAP to track and analyze their purchase over time. They are introduced to Tampa Development Group to deploy additional capital as a passive investor. They are invited into the Suarez Global community for ongoing education, content, and engagement. A one-time transaction becomes an ongoing ecosystem relationship.</p>
+      <div class="tag reap">→ REAP</div>
+      <div class="tag tdg">→ Tampa Development Group</div>
+      <div class="tag sg">→ Suarez Global Community</div>
+      <div class="causal"><strong>Why this causes Node 5 →</strong> An activated client who is tracking their property in REAP, seeing TDG returns, and engaged in the SG community stays in the ecosystem. Engaged clients refer. Investors come back to buy again. The relationship doesn't cool — it compounds.</div>
+    </div>
+  </div>
+
+  <div class="node-row">
+    <div class="n-num">05</div>
+    <div class="n-body">
+      <h3>Referrals, Reputation & Repeat</h3>
+      <p>Successful buyers tell others. Investors who deployed capital with TDG come back for the next deal — and Javier represents that transaction. Community members generate referrals that arrive pre-warmed with higher trust and shorter sales cycles. Each rotation adds proof, testimonials, case studies, and track record to the ecosystem's credibility. The reputation asset accumulates and cannot be replicated by competitors.</p>
+      <div class="causal"><strong>Why this causes Node 1 (with more energy) →</strong> Referred leads arrive with trust already established — they need less education, convert faster, and are higher quality. Repeat buyers need less positioning. The flywheel spins faster because the <em>quality</em> of leads entering Node 1 improves with every rotation. This is the reinforcing return.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SECTION 4: ARCHITECTURE COMPONENTS          -->
+<!-- ════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-tag">Architecture Components</div>
+
+  <div class="arch-grid">
+
+    <div class="arch-card ac">
+      <div class="arch-label green">Amplifier</div>
+      <h3>Internal Deal Flow + Track Record</h3>
+      <p>Two forces make this flywheel spin faster over time. First: internal deal flow from TDG and Freedom Launch. Every ecosystem acquisition and disposition is a transaction Javier represents — revenue that grows automatically as the other businesses scale, with zero additional marketing spend. Second: track record. Each successful buyer adds proof. Proof attracts higher-quality leads. Higher-quality leads close faster. The compounding accelerates.</p>
+    </div>
+
+    <div class="arch-card ac">
+      <div class="arch-label green">Reinvestment Loop</div>
+      <h3>Commission → Lead Gen → More Deals</h3>
+      <p>Commission income reinvested into lead generation grows the external buyer pipeline. Those clients close. Some convert to TDG investors via post-close activation. TDG does more deals. Javier represents those deals. More commission generated. Each dollar of commission that re-enters the top of the funnel produces more than one dollar of future commission — because the trust and track record from prior rotations reduce acquisition cost.</p>
+    </div>
+
+    <div class="arch-card gd full">
+      <div class="arch-label gold">Compounding Asset</div>
+      <h3>Trust & Track Record</h3>
+      <p>The asset that accumulates with every rotation of this flywheel is trust — verified by closed deals, validated by REAP analytics, amplified by Suarez Global content, and compounded by referrals. Trust is the hardest asset for a competitor to replicate because it cannot be purchased, shortcut, or faked. It can only be built through consistent, directionally aligned effort over time. Each rotation leaves behind more trust than the rotation before it. This is what separates a flywheel from a treadmill — the loop doesn't just run, it accumulates.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SECTION 5: CAUSAL INTEGRITY CHECK           -->
+<!-- ════════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-tag">Causal Arrow Integrity</div>
+  <div class="bottom-grid">
+
+    <div class="bot-card">
+      <div class="bot-label">Node 1 → Node 2</div>
+      <div class="bot-val"><strong>Educated buyer executes faster.</strong> Financial picture mapped, strategy locked, expectations set. Lender arrives warm. Fewer failed offers, shorter cycle times, higher win rate on offers.</div>
+    </div>
+
+    <div class="bot-card">
+      <div class="bot-label">Node 2 → Node 3</div>
+      <div class="bot-val"><strong>Strategic precision produces closes.</strong> Data-driven offers aligned with pre-approval and strategy win more often. The coaching at Node 1 and execution at Node 2 eliminate the most common reasons deals fall apart.</div>
+    </div>
+
+    <div class="bot-card">
+      <div class="bot-label">Node 3 → Node 4</div>
+      <div class="bot-val"><strong>Peak trust meets systematic process.</strong> Closed buyer has maximum trust, capital deployed, and real estate on their mind. Activation sequence meets them at their most receptive moment.</div>
+    </div>
+
+    <div class="bot-card">
+      <div class="bot-label">Node 4 → Node 5</div>
+      <div class="bot-val"><strong>Engaged clients stay and refer.</strong> REAP keeps them tracking performance. TDG gives them somewhere to invest. SG community keeps the relationship alive. Active participants generate referrals and repeat business.</div>
+    </div>
+
+    <div class="bot-card full">
+      <div class="bot-label">Node 5 → Node 1 (The Reinforcing Return)</div>
+      <div class="bot-val"><strong>Referred leads arrive warmer than the last generation.</strong> They already trust the brand. They convert faster. They need less education. Repeat buyers skip early positioning entirely. The flywheel doesn't just maintain speed — it accelerates, because the input quality at Node 1 improves with every rotation. This is the compounding mechanism.</div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /page -->
+</body>
+</html>
