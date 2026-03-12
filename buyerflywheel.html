@@ -7,24 +7,29 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #050508;
-  --surface: #0c0c14;
-  --surface-2: #121220;
-  --surface-3: #1a1a2a;
-  --border: rgba(255,255,255,0.05);
-  --border-h: rgba(255,255,255,0.1);
-  --text: #eaeaf2;
-  --text-dim: #72728c;
-  --text-muted: #3d3d55;
-  --accent: #00e5a0;
-  --accent-soft: rgba(0,229,160,0.07);
-  --accent-mid: rgba(0,229,160,0.15);
-  --accent-glow: rgba(0,229,160,0.3);
-  --gold: #ffd700;
-  --gold-soft: rgba(255,215,0,0.06);
-  --gold-mid: rgba(255,215,0,0.15);
-  --orange: #ff6b35;
-  --orange-soft: rgba(255,107,53,0.06);
+  --bg: #faf9f7;
+  --surface: #ffffff;
+  --surface-2: #f3f2ef;
+  --surface-3: #eae8e4;
+  --border: rgba(0,0,0,0.07);
+  --border-h: rgba(0,0,0,0.12);
+  --text: #1a1a2e;
+  --text-mid: #3a3a52;
+  --text-dim: #6b6b82;
+  --text-muted: #9e9eb2;
+  --green: #00b37e;
+  --green-soft: rgba(0,179,126,0.08);
+  --green-mid: rgba(0,179,126,0.18);
+  --green-dark: #008f65;
+  --gold: #c8930a;
+  --gold-soft: rgba(200,147,10,0.08);
+  --gold-mid: rgba(200,147,10,0.18);
+  --orange: #e05a1e;
+  --orange-soft: rgba(224,90,30,0.08);
+  --teal: #0a8a8a;
+  --teal-soft: rgba(10,138,138,0.08);
+  --purple: #6b4de0;
+  --purple-soft: rgba(107,77,224,0.07);
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -37,48 +42,46 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-body::after {
+/* Subtle top accent bar */
+body::before {
   content:'';
-  position:fixed;
-  inset:0;
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
-  pointer-events:none;
-  z-index:9999;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--green), var(--teal), var(--purple), var(--orange), var(--gold));
+  z-index: 100;
 }
-
-.amb { position:fixed; border-radius:50%; filter:blur(180px); pointer-events:none; opacity:0.07; }
-.amb1 { width:500px; height:500px; background:var(--accent); top:25%; left:35%; }
 
 /* ── HEADER ── */
 .header {
-  position:relative; z-index:1;
-  padding: 44px 56px 28px;
+  position: relative;
+  padding: 48px 56px 32px;
   border-bottom: 1px solid var(--border);
+  background: var(--surface);
 }
 .h-tag {
   font-family:'DM Mono',monospace;
   font-size:10px; letter-spacing:4px; text-transform:uppercase;
-  color:var(--text-muted); margin-bottom:8px;
+  color:var(--text-muted); margin-bottom:10px;
 }
 .h-title {
-  font-size: clamp(34px,5vw,60px);
+  font-size: clamp(34px,5vw,58px);
   font-weight:900; letter-spacing:-2px; line-height:1.05;
-  background: linear-gradient(140deg,#fff 20%,#666 100%);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  color: var(--text);
 }
+.h-title span { color: var(--green); }
 .h-sub {
-  font-size:16px; color:var(--text-dim); font-weight:300;
-  margin-top:8px; max-width:620px; line-height:1.65;
+  font-size:16px; color:var(--text-dim); font-weight:400;
+  margin-top:10px; max-width:640px; line-height:1.65;
 }
 
 /* ── LAYOUT ── */
-.page { position:relative; z-index:1; }
+.page { position:relative; }
 .section {
   max-width:1060px; margin:0 auto;
-  padding: 56px 48px;
+  padding: 52px 48px;
 }
 .section + .section { border-top: 1px solid var(--border); }
-
 .section-tag {
   font-family:'DM Mono',monospace;
   font-size:9px; letter-spacing:4px; text-transform:uppercase;
@@ -87,32 +90,35 @@ body::after {
 
 /* ── FLYWHEEL SVG ── */
 .fw-center { display:flex; justify-content:center; }
-.fw-svg { width:100%; max-width:720px; }
+.fw-svg { width:100%; max-width:680px; }
 
 /* ── ARCHITECTURE GRID ── */
 .arch-grid {
   display:grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 18px;
   margin-top: 8px;
 }
 .arch-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 28px 28px 24px;
+  padding: 26px 26px 22px;
   position: relative;
   overflow: hidden;
-  transition: border-color 0.3s;
+  transition: box-shadow 0.3s, border-color 0.3s;
 }
-.arch-card:hover { border-color: var(--border-h); }
+.arch-card:hover {
+  border-color: var(--border-h);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
 .arch-card::before {
   content:'';
   position:absolute;
-  top:0; left:0; right:0; height:2px;
+  top:0; left:0; right:0; height:3px;
 }
-.arch-card.ac::before { background: linear-gradient(90deg,var(--accent),transparent); }
-.arch-card.gd::before { background: linear-gradient(90deg,var(--gold),transparent); }
+.arch-card.green-bar::before { background: linear-gradient(90deg,var(--green),var(--teal)); }
+.arch-card.gold-bar::before { background: linear-gradient(90deg,var(--gold),var(--orange)); }
 .arch-card.full { grid-column: 1 / -1; }
 
 .arch-label {
@@ -120,21 +126,21 @@ body::after {
   font-size:9px; letter-spacing:3px; text-transform:uppercase;
   margin-bottom:10px;
 }
-.arch-label.green { color:var(--accent); }
+.arch-label.green { color:var(--green); }
 .arch-label.gold { color:var(--gold); }
 
 .arch-card h3 {
-  font-size:19px; font-weight:700; letter-spacing:-0.3px;
-  margin-bottom:8px;
+  font-size:18px; font-weight:700; letter-spacing:-0.3px;
+  margin-bottom:8px; color:var(--text);
 }
 .arch-card p {
-  font-size:14px; line-height:1.7; color:var(--text-dim); font-weight:300;
+  font-size:14px; line-height:1.7; color:var(--text-dim); font-weight:400;
 }
 
 /* ── NODE ROWS ── */
 .node-row {
   display:grid;
-  grid-template-columns: 48px 1fr;
+  grid-template-columns: 50px 1fr;
   gap:20px;
   padding:28px 0;
   border-bottom:1px solid var(--border);
@@ -143,38 +149,39 @@ body::after {
 .node-row:first-of-type { border-top:1px solid var(--border); }
 
 .n-num {
-  width:42px; height:42px; border-radius:50%;
+  width:44px; height:44px; border-radius:50%;
   display:flex; align-items:center; justify-content:center;
-  font-family:'DM Mono',monospace; font-size:14px; font-weight:500;
+  font-family:'DM Mono',monospace; font-size:15px; font-weight:500;
   flex-shrink:0; margin-top:1px;
-  background:var(--accent-soft); color:var(--accent);
-  border:1px solid var(--accent-mid);
+  background:var(--green-soft); color:var(--green-dark);
+  border:1.5px solid var(--green-mid);
 }
 
 .n-body h3 {
   font-size:19px; font-weight:700; letter-spacing:-0.3px; margin-bottom:6px;
+  color:var(--text);
 }
 .n-body p {
-  font-size:14px; line-height:1.7; color:var(--text-dim); font-weight:300;
+  font-size:14px; line-height:1.75; color:var(--text-dim); font-weight:400;
 }
 
 /* Causal arrow callout */
 .causal {
   margin-top:14px;
   padding:12px 16px;
-  background: var(--surface-2);
-  border-left:2px solid var(--accent);
-  border-radius:0 8px 8px 0;
-  font-size:13px; line-height:1.65; color:var(--text-dim); font-weight:300;
+  background: var(--green-soft);
+  border-left:3px solid var(--green);
+  border-radius:0 10px 10px 0;
+  font-size:13px; line-height:1.65; color:var(--text-mid); font-weight:400;
 }
-.causal strong { color:var(--accent); font-weight:500; }
+.causal strong { color:var(--green-dark); font-weight:600; }
 
 /* Sub-process pills */
 .sub-steps {
   display:flex; flex-wrap:wrap; gap:6px; margin-top:12px;
 }
 .sub-step {
-  padding:4px 12px;
+  padding:5px 13px;
   background:var(--surface-2);
   border:1px solid var(--border);
   border-radius:100px;
@@ -184,29 +191,32 @@ body::after {
 }
 
 /* Handoff tags */
+.tags { margin-top:12px; }
 .tag {
   display:inline-flex; align-items:center; gap:4px;
-  padding:4px 11px; border-radius:100px;
+  padding:5px 12px; border-radius:100px;
   font-family:'DM Mono',monospace;
   font-size:9px; letter-spacing:1px; text-transform:uppercase;
-  margin-top:12px; margin-right:5px;
+  margin-right:5px; margin-bottom:4px;
 }
 .tag.reap { background:var(--gold-soft); color:var(--gold); }
-.tag.tdg { background:var(--accent-soft); color:var(--accent); }
+.tag.tdg { background:var(--teal-soft); color:var(--teal); }
 .tag.sg { background:var(--orange-soft); color:var(--orange); }
 
 /* ── BOTTOM GRID ── */
 .bottom-grid {
   display:grid;
   grid-template-columns: 1fr 1fr;
-  gap:20px;
+  gap:18px;
 }
 .bot-card {
   background:var(--surface);
   border:1px solid var(--border);
   border-radius:14px;
-  padding:24px 24px 20px;
+  padding:22px 22px 20px;
+  transition: box-shadow 0.3s;
 }
+.bot-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
 .bot-card.full { grid-column:1/-1; }
 .bot-label {
   font-family:'DM Mono',monospace;
@@ -214,7 +224,7 @@ body::after {
   color:var(--text-muted); margin-bottom:8px;
 }
 .bot-val {
-  font-size:14px; line-height:1.7; color:var(--text-dim); font-weight:300;
+  font-size:13.5px; line-height:1.7; color:var(--text-dim); font-weight:400;
 }
 .bot-val strong { color:var(--text); font-weight:600; }
 
@@ -222,154 +232,148 @@ body::after {
 @media (max-width:768px) {
   .header { padding:28px 20px; }
   .section { padding:36px 20px; }
-  .arch-grid { grid-template-columns:1fr; }
-  .bottom-grid { grid-template-columns:1fr; }
-  .node-row { grid-template-columns:38px 1fr; gap:14px; }
+  .arch-grid, .bottom-grid { grid-template-columns:1fr; }
+  .node-row { grid-template-columns:40px 1fr; gap:14px; }
 }
 </style>
 </head>
 <body>
-<div class="amb amb1"></div>
 
 <header class="header">
   <div class="h-tag">Javier Suarez · Buyer Agency</div>
-  <h1 class="h-title">Buyer Flywheel</h1>
+  <h1 class="h-title">Buyer <span>Flywheel</span></h1>
   <p class="h-sub">Five nodes. Each step causes the next. The last step feeds the first with more energy than it started with. The loop compounds trust, track record, and deal flow with every rotation.</p>
 </header>
 
 <div class="page">
 
-<!-- ════════════════════════════════════════════ -->
-<!-- SECTION 1: THE FLYWHEEL DIAGRAM             -->
-<!-- ════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION 1: THE FLYWHEEL DIAGRAM            -->
+<!-- ═══════════════════════════════════════════ -->
 <div class="section">
   <div class="section-tag">The Loop</div>
   <div class="fw-center">
     <svg class="fw-svg" viewBox="0 0 720 720" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-        <filter id="soft"><feGaussianBlur stdDeviation="35"/></filter>
-        <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-          <path d="M0,0.5 L8,3.5 L0,6.5" fill="none" stroke="#00e5a0" stroke-width="1.5"/>
-        </marker>
+        <filter id="shadow">
+          <feDropShadow dx="0" dy="2" stdDeviation="6" flood-color="rgba(0,0,0,0.08)"/>
+        </filter>
+        <filter id="soft"><feGaussianBlur stdDeviation="40"/></filter>
       </defs>
 
       <!-- Background glow -->
-      <circle cx="360" cy="360" r="160" fill="#00e5a0" opacity="0.035" filter="url(#soft)"/>
+      <circle cx="360" cy="360" r="180" fill="#00b37e" opacity="0.04" filter="url(#soft)"/>
 
       <!-- Flywheel ring -->
-      <circle cx="360" cy="360" r="240" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="60"/>
-      <circle cx="360" cy="360" r="270" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-      <circle cx="360" cy="360" r="210" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
-
-      <!--
-        5 nodes on r=240, center=360,360
-        Clockwise from top:
-        N1: -90°  → (360, 120)   — Educate & Position
-        N2: -18°  → (588, 286)   — Strategic Execution
-        N3:  54°  → (501, 554)   — Close Transaction
-        N4: 126°  → (219, 554)   — Post-Close Activation
-        N5: 198°  → (132, 286)   — Referrals & Repeat
-      -->
+      <circle cx="360" cy="360" r="240" fill="none" stroke="rgba(0,0,0,0.03)" stroke-width="58"/>
+      <circle cx="360" cy="360" r="270" fill="none" stroke="rgba(0,0,0,0.05)" stroke-width="0.5" stroke-dasharray="4,4"/>
+      <circle cx="360" cy="360" r="210" fill="none" stroke="rgba(0,0,0,0.05)" stroke-width="0.5" stroke-dasharray="4,4"/>
 
       <!-- ── DIRECTIONAL ARCS ── -->
-      <!-- Thick accent arcs between nodes showing clockwise flow -->
       <!-- N1 → N2 -->
-      <path d="M 400 125 A 240 240 0 0 1 580 275" fill="none" stroke="#00e5a0" stroke-width="3.5" opacity="0.3"/>
+      <path d="M 400 125 A 240 240 0 0 1 580 275" fill="none" stroke="#00b37e" stroke-width="4" opacity="0.25" stroke-linecap="round"/>
       <!-- N2 → N3 -->
-      <path d="M 592 310 A 240 240 0 0 1 510 545" fill="none" stroke="#00e5a0" stroke-width="3.5" opacity="0.3"/>
+      <path d="M 592 310 A 240 240 0 0 1 510 545" fill="none" stroke="#0a8a8a" stroke-width="4" opacity="0.25" stroke-linecap="round"/>
       <!-- N3 → N4 -->
-      <path d="M 480 565 A 240 240 0 0 1 240 565" fill="none" stroke="#00e5a0" stroke-width="3.5" opacity="0.3"/>
+      <path d="M 480 565 A 240 240 0 0 1 240 565" fill="none" stroke="#6b4de0" stroke-width="4" opacity="0.2" stroke-linecap="round"/>
       <!-- N4 → N5 -->
-      <path d="M 210 540 A 240 240 0 0 1 135 310" fill="none" stroke="#00e5a0" stroke-width="3.5" opacity="0.3"/>
-      <!-- N5 → N1 (the return — this is the reinforcing return) -->
-      <path d="M 140 270 A 240 240 0 0 1 320 125" fill="none" stroke="#00e5a0" stroke-width="4" opacity="0.45"/>
+      <path d="M 210 540 A 240 240 0 0 1 135 310" fill="none" stroke="#e05a1e" stroke-width="4" opacity="0.22" stroke-linecap="round"/>
+      <!-- N5 → N1 (reinforcing return — thicker) -->
+      <path d="M 140 270 A 240 240 0 0 1 320 125" fill="none" stroke="#00b37e" stroke-width="5.5" opacity="0.35" stroke-linecap="round"/>
 
-      <!-- Directional chevrons on arcs -->
-      <g stroke="#00e5a0" stroke-width="1.5" fill="none" opacity="0.5">
-        <!-- 1→2 -->
-        <path d="M 500 190 l 10 8 l -8 9"/>
-        <!-- 2→3 -->
-        <path d="M 565 430 l -3 13 l -11 -1"/>
-        <!-- 3→4 -->
-        <path d="M 360 590 l -13 2 l 3 -12"/>
-        <!-- 4→5 -->
-        <path d="M 160 430 l -8 -10 l 12 -3"/>
-        <!-- 5→1 (stronger) -->
-        <path d="M 220 175 l 10 -8 l 3 12"/>
-        <path d="M 270 148 l 10 -6 l 2 12"/>
+      <!-- Directional chevrons -->
+      <g fill="none" stroke-width="2" stroke-linecap="round" opacity="0.4">
+        <path stroke="#00b37e" d="M 498 192 l 9 8 l -7 9"/>
+        <path stroke="#0a8a8a" d="M 563 430 l -3 12 l -10 -2"/>
+        <path stroke="#6b4de0" d="M 360 588 l -12 1 l 3 -11"/>
+        <path stroke="#e05a1e" d="M 158 428 l -7 -10 l 11 -3"/>
+        <!-- Double chevron on return -->
+        <path stroke="#00b37e" d="M 218 178 l 10 -7 l 2 11"/>
+        <path stroke="#00b37e" d="M 265 150 l 10 -5 l 1 11"/>
       </g>
 
       <!-- ── NODE CIRCLES ── -->
 
       <!-- N1: Educate & Position — 12 o'clock -->
-      <circle cx="360" cy="120" r="42" fill="var(--surface)" stroke="#00e5a0" stroke-width="1.5"/>
-      <text x="360" y="113" text-anchor="middle" font-family="DM Mono" font-size="12" font-weight="500" fill="#00e5a0">01</text>
-      <text x="360" y="129" text-anchor="middle" font-family="Outfit" font-size="9" font-weight="500" fill="var(--text-dim)">EDUCATE &</text>
-      <text x="360" y="140" text-anchor="middle" font-family="Outfit" font-size="9" font-weight="500" fill="var(--text-dim)">POSITION</text>
+      <g filter="url(#shadow)">
+        <circle cx="360" cy="120" r="44" fill="#fff" stroke="#00b37e" stroke-width="2"/>
+      </g>
+      <text x="360" y="112" text-anchor="middle" font-family="DM Mono" font-size="13" font-weight="500" fill="#00b37e">01</text>
+      <text x="360" y="127" text-anchor="middle" font-family="Outfit" font-size="8.5" font-weight="600" fill="#3a3a52">EDUCATE &</text>
+      <text x="360" y="138" text-anchor="middle" font-family="Outfit" font-size="8.5" font-weight="600" fill="#3a3a52">POSITION</text>
 
       <!-- N2: Strategic Execution — 2 o'clock -->
-      <circle cx="588" cy="286" r="42" fill="var(--surface)" stroke="#00e5a0" stroke-width="1.5"/>
-      <text x="588" y="279" text-anchor="middle" font-family="DM Mono" font-size="12" font-weight="500" fill="#00e5a0">02</text>
-      <text x="588" y="295" text-anchor="middle" font-family="Outfit" font-size="9" font-weight="500" fill="var(--text-dim)">STRATEGIC</text>
-      <text x="588" y="306" text-anchor="middle" font-family="Outfit" font-size="9" font-weight="500" fill="var(--text-dim)">EXECUTION</text>
+      <g filter="url(#shadow)">
+        <circle cx="588" cy="286" r="44" fill="#fff" stroke="#0a8a8a" stroke-width="2"/>
+      </g>
+      <text x="588" y="278" text-anchor="middle" font-family="DM Mono" font-size="13" font-weight="500" fill="#0a8a8a">02</text>
+      <text x="588" y="293" text-anchor="middle" font-family="Outfit" font-size="8.5" font-weight="600" fill="#3a3a52">STRATEGIC</text>
+      <text x="588" y="304" text-anchor="middle" font-family="Outfit" font-size="8.5" font-weight="600" fill="#3a3a52">EXECUTION</text>
 
-      <!-- N3: Close Transaction — 4 o'clock -->
-      <circle cx="501" cy="554" r="42" fill="var(--surface)" stroke="#00e5a0" stroke-width="1.5"/>
-      <text x="501" y="547" text-anchor="middle" font-family="DM Mono" font-size="12" font-weight="500" fill="#00e5a0">03</text>
-      <text x="501" y="563" text-anchor="middle" font-family="Outfit" font-size="9" font-weight="500" fill="var(--text-dim)">CLOSE</text>
-      <text x="501" y="574" text-anchor="middle" font-family="Outfit" font-size="9" font-weight="500" fill="var(--text-dim)">TRANSACTION</text>
+      <!-- N3: Close Transaction — 5 o'clock -->
+      <g filter="url(#shadow)">
+        <circle cx="501" cy="554" r="44" fill="#fff" stroke="#6b4de0" stroke-width="2"/>
+      </g>
+      <text x="501" y="546" text-anchor="middle" font-family="DM Mono" font-size="13" font-weight="500" fill="#6b4de0">03</text>
+      <text x="501" y="561" text-anchor="middle" font-family="Outfit" font-size="8.5" font-weight="600" fill="#3a3a52">CLOSE</text>
+      <text x="501" y="572" text-anchor="middle" font-family="Outfit" font-size="8.5" font-weight="600" fill="#3a3a52">TRANSACTION</text>
 
-      <!-- N4: Post-Close Activation — 8 o'clock -->
-      <circle cx="219" cy="554" r="42" fill="var(--surface)" stroke="#00e5a0" stroke-width="1.5"/>
-      <text x="219" y="547" text-anchor="middle" font-family="DM Mono" font-size="12" font-weight="500" fill="#00e5a0">04</text>
-      <text x="219" y="563" text-anchor="middle" font-family="Outfit" font-size="9" font-weight="500" fill="var(--text-dim)">POST-CLOSE</text>
-      <text x="219" y="574" text-anchor="middle" font-family="Outfit" font-size="9" font-weight="500" fill="var(--text-dim)">ACTIVATION</text>
+      <!-- N4: Post-Close Activation — 7 o'clock -->
+      <g filter="url(#shadow)">
+        <circle cx="219" cy="554" r="44" fill="#fff" stroke="#e05a1e" stroke-width="2"/>
+      </g>
+      <text x="219" y="546" text-anchor="middle" font-family="DM Mono" font-size="13" font-weight="500" fill="#e05a1e">04</text>
+      <text x="219" y="561" text-anchor="middle" font-family="Outfit" font-size="8.5" font-weight="600" fill="#3a3a52">POST-CLOSE</text>
+      <text x="219" y="572" text-anchor="middle" font-family="Outfit" font-size="8.5" font-weight="600" fill="#3a3a52">ACTIVATION</text>
 
-      <!-- N5: Referrals, Reputation & Repeat — 10 o'clock -->
-      <circle cx="132" cy="286" r="42" fill="var(--surface)" stroke="#00e5a0" stroke-width="1.5"/>
-      <text x="132" y="279" text-anchor="middle" font-family="DM Mono" font-size="12" font-weight="500" fill="#00e5a0">05</text>
-      <text x="132" y="295" text-anchor="middle" font-family="Outfit" font-size="9" font-weight="500" fill="var(--text-dim)">REFERRALS &</text>
-      <text x="132" y="306" text-anchor="middle" font-family="Outfit" font-size="9" font-weight="500" fill="var(--text-dim)">REPEAT</text>
+      <!-- N5: Referrals & Repeat — 10 o'clock -->
+      <g filter="url(#shadow)">
+        <circle cx="132" cy="286" r="44" fill="#fff" stroke="#c8930a" stroke-width="2"/>
+      </g>
+      <text x="132" y="278" text-anchor="middle" font-family="DM Mono" font-size="13" font-weight="500" fill="#c8930a">05</text>
+      <text x="132" y="293" text-anchor="middle" font-family="Outfit" font-size="8.5" font-weight="600" fill="#3a3a52">REFERRALS &</text>
+      <text x="132" y="304" text-anchor="middle" font-family="Outfit" font-size="8.5" font-weight="600" fill="#3a3a52">REPEAT</text>
 
       <!-- ── CENTER HUB ── -->
-      <circle cx="360" cy="360" r="68" fill="var(--surface)" stroke="rgba(0,229,160,0.25)" stroke-width="1.5"/>
-      <text x="360" y="347" text-anchor="middle" font-family="Outfit" font-weight="800" font-size="14" fill="#fff">JAVIER</text>
-      <text x="360" y="365" text-anchor="middle" font-family="Outfit" font-weight="800" font-size="14" fill="#fff">SUAREZ</text>
-      <text x="360" y="385" text-anchor="middle" font-family="DM Mono" font-size="7" fill="var(--text-muted)" letter-spacing="2.5">BUYER FLYWHEEL</text>
+      <g filter="url(#shadow)">
+        <circle cx="360" cy="360" r="70" fill="#fff" stroke="rgba(0,179,126,0.25)" stroke-width="2"/>
+      </g>
+      <text x="360" y="348" text-anchor="middle" font-family="Outfit" font-weight="800" font-size="15" fill="#1a1a2e">JAVIER</text>
+      <text x="360" y="366" text-anchor="middle" font-family="Outfit" font-weight="800" font-size="15" fill="#1a1a2e">SUAREZ</text>
+      <text x="360" y="386" text-anchor="middle" font-family="DM Mono" font-size="7" fill="var(--text-muted)" letter-spacing="2.5">BUYER FLYWHEEL</text>
 
-      <!-- Reinforcing return label on the N5→N1 arc -->
-      <text x="175" y="168" font-family="DM Mono" font-size="7" fill="#00e5a0" opacity="0.55" letter-spacing="1.5" transform="rotate(-48,175,168)">RETURNS STRONGER</text>
+      <!-- Reinforcing return label -->
+      <text x="178" y="170" font-family="DM Mono" font-size="7" fill="#00b37e" opacity="0.7" letter-spacing="1.5" transform="rotate(-48,178,170)">RETURNS STRONGER</text>
 
       <!-- Animated orbit dots -->
-      <circle r="4.5" fill="#00e5a0" opacity="0.85">
+      <circle r="5" fill="#00b37e" opacity="0.7">
         <animateMotion dur="12s" repeatCount="indefinite">
           <mpath href="#orb"/>
         </animateMotion>
       </circle>
-      <circle r="3.5" fill="#00e5a0" opacity="0.4">
+      <circle r="4" fill="#6b4de0" opacity="0.4">
         <animateMotion dur="12s" repeatCount="indefinite" begin="-6s">
           <mpath href="#orb"/>
         </animateMotion>
       </circle>
       <path id="orb" d="M 360 120 A 240 240 0 1 1 359.9 120" fill="none" stroke="none"/>
 
-      <!-- Pulse on N5→N1 return -->
-      <circle cx="360" cy="120" r="42" fill="none" stroke="#00e5a0" opacity="0">
-        <animate attributeName="r" values="42;58;42" dur="4s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values="0.18;0;0.18" dur="4s" repeatCount="indefinite"/>
+      <!-- Pulse on return node -->
+      <circle cx="360" cy="120" r="44" fill="none" stroke="#00b37e" opacity="0">
+        <animate attributeName="r" values="44;60;44" dur="4s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.15;0;0.15" dur="4s" repeatCount="indefinite"/>
       </circle>
     </svg>
   </div>
 </div>
 
-<!-- ════════════════════════════════════════════ -->
-<!-- SECTION 2: CATALYST                         -->
-<!-- ════════════════════════════════════════════ -->
-<div class="section">
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION 2: CATALYST                        -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section" style="background:var(--surface);">
   <div class="section-tag">Catalyst — What Starts the Flywheel Spinning</div>
   <div class="arch-grid">
-    <div class="arch-card ac full">
+    <div class="arch-card green-bar full">
       <div class="arch-label green">Catalyst</div>
       <h3>Someone Needs to Buy Real Estate</h3>
       <p>The flywheel starts when a person with acquisition intent enters the ecosystem — through Suarez Global content, a referral from a past client, an introduction from REAP, or direct outreach. They have a question: "How do I buy a property strategically?" That question is the entry point. The catalyst is not Javier finding them — it is them finding the ecosystem because the ecosystem has earned the right to be found.</p>
@@ -377,9 +381,9 @@ body::after {
   </div>
 </div>
 
-<!-- ════════════════════════════════════════════ -->
-<!-- SECTION 3: THE FIVE NODES                   -->
-<!-- ════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION 3: THE FIVE NODES                  -->
+<!-- ═══════════════════════════════════════════ -->
 <div class="section">
   <div class="section-tag">Nodes — The Stages of the Loop</div>
 
@@ -387,7 +391,7 @@ body::after {
     <div class="n-num">01</div>
     <div class="n-body">
       <h3>Educate & Position the Buyer</h3>
-      <p>This is the coaching-first approach that differentiates Javier from every other agent. Before a single property is viewed, the buyer's full financial picture is mapped, their life goals are understood, and they are positioned from strength. Most buyers discover they're in a stronger position than they assumed. This node produces an informed, confident, strategically positioned buyer — which directly causes the next node to execute faster and with fewer failures.</p>
+      <p>The coaching-first approach that differentiates Javier from every other agent. Before a single property is viewed, the buyer's full financial picture is mapped, their life goals are understood, and they are positioned from strength. Most buyers discover they're in a stronger position than they assumed. This node produces an informed, confident, strategically positioned buyer — which directly causes the next node to execute faster and with fewer failures.</p>
       <div class="sub-steps">
         <span class="sub-step">01 · Inquiry & Capture</span>
         <span class="sub-step">02 · Financial Checklist</span>
@@ -401,7 +405,7 @@ body::after {
     <div class="n-num">02</div>
     <div class="n-body">
       <h3>Strategic Market Execution</h3>
-      <p>Market analyzed like operators — days on market, absorption rate, price per sqft, macro trends. Strategy track selected (first-time, investment-focused, or generational wealth). Lender matched and pre-approval secured. MLS alerts live, AI property tools active, showings scheduled, offers drafted in alignment with the strategy. Full negotiation on terms, price, and contingencies. This is where the educated buyer meets the market with precision.</p>
+      <p>Market analyzed like operators — days on market, absorption rate, price per sqft, macro trends. Strategy track selected (first-time, investment-focused, or generational wealth). Lender matched and pre-approval secured. MLS alerts live, AI property tools active, showings scheduled, offers drafted in alignment with the strategy. Full negotiation on terms, price, and contingencies.</p>
       <div class="sub-steps">
         <span class="sub-step">04 · Market Analysis</span>
         <span class="sub-step">05 · Strategy Development</span>
@@ -416,7 +420,7 @@ body::after {
     <div class="n-num">03</div>
     <div class="n-body">
       <h3>Close the Transaction</h3>
-      <p>Deal closes. Buyer owns a property. Commission is captured — and on internal ecosystem deals (TDG acquisitions, Freedom Launch dispositions), that commission stays inside the system instead of leaking to an outside agent. The close is not the end of the relationship. It is the moment the buyer has maximum trust, maximum real estate mindshare, and capital deployed — making them the warmest possible prospect for the next node.</p>
+      <p>Deal closes. Buyer owns a property. Commission is captured — and on internal ecosystem deals (TDG acquisitions, Freedom Launch dispositions), that commission stays inside the system instead of leaking to an outside agent. The close is not the end of the relationship. It is the moment the buyer has maximum trust, maximum real estate mindshare, and capital deployed.</p>
       <div class="causal"><strong>Why this causes Node 4 →</strong> A buyer who just closed has demonstrated trust by transacting. They have capital deployed. They are in a real estate mindset. They are psychologically primed to go deeper — the activation sequence meets them at peak receptivity.</div>
     </div>
   </div>
@@ -426,9 +430,11 @@ body::after {
     <div class="n-body">
       <h3>Post-Close Activation</h3>
       <p>Every closed buyer enters a systematic sequence — not a one-off email, a real process. They are introduced to REAP to track and analyze their purchase over time. They are introduced to Tampa Development Group to deploy additional capital as a passive investor. They are invited into the Suarez Global community for ongoing education, content, and engagement. A one-time transaction becomes an ongoing ecosystem relationship.</p>
-      <div class="tag reap">→ REAP</div>
-      <div class="tag tdg">→ Tampa Development Group</div>
-      <div class="tag sg">→ Suarez Global Community</div>
+      <div class="tags">
+        <span class="tag reap">→ REAP</span>
+        <span class="tag tdg">→ Tampa Development Group</span>
+        <span class="tag sg">→ Suarez Global Community</span>
+      </div>
       <div class="causal"><strong>Why this causes Node 5 →</strong> An activated client who is tracking their property in REAP, seeing TDG returns, and engaged in the SG community stays in the ecosystem. Engaged clients refer. Investors come back to buy again. The relationship doesn't cool — it compounds.</div>
     </div>
   </div>
@@ -437,52 +443,52 @@ body::after {
     <div class="n-num">05</div>
     <div class="n-body">
       <h3>Referrals, Reputation & Repeat</h3>
-      <p>Successful buyers tell others. Investors who deployed capital with TDG come back for the next deal — and Javier represents that transaction. Community members generate referrals that arrive pre-warmed with higher trust and shorter sales cycles. Each rotation adds proof, testimonials, case studies, and track record to the ecosystem's credibility. The reputation asset accumulates and cannot be replicated by competitors.</p>
+      <p>Successful buyers tell others. Investors who deployed capital with TDG come back for the next deal — and Javier represents that transaction. Community members generate referrals that arrive pre-warmed with higher trust and shorter sales cycles. Each rotation adds proof, testimonials, case studies, and track record to the ecosystem's credibility.</p>
       <div class="causal"><strong>Why this causes Node 1 (with more energy) →</strong> Referred leads arrive with trust already established — they need less education, convert faster, and are higher quality. Repeat buyers need less positioning. The flywheel spins faster because the <em>quality</em> of leads entering Node 1 improves with every rotation. This is the reinforcing return.</div>
     </div>
   </div>
 
 </div>
 
-<!-- ════════════════════════════════════════════ -->
-<!-- SECTION 4: ARCHITECTURE COMPONENTS          -->
-<!-- ════════════════════════════════════════════ -->
-<div class="section">
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION 4: ARCHITECTURE COMPONENTS         -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section" style="background:var(--surface);">
   <div class="section-tag">Architecture Components</div>
 
   <div class="arch-grid">
 
-    <div class="arch-card ac">
+    <div class="arch-card green-bar">
       <div class="arch-label green">Amplifier</div>
       <h3>Internal Deal Flow + Track Record</h3>
-      <p>Two forces make this flywheel spin faster over time. First: internal deal flow from TDG and Freedom Launch. Every ecosystem acquisition and disposition is a transaction Javier represents — revenue that grows automatically as the other businesses scale, with zero additional marketing spend. Second: track record. Each successful buyer adds proof. Proof attracts higher-quality leads. Higher-quality leads close faster. The compounding accelerates.</p>
+      <p>Two forces make this flywheel spin faster over time. First: internal deal flow from TDG and Freedom Launch — revenue that grows automatically as the other businesses scale, with zero additional marketing spend. Second: track record. Each successful buyer adds proof. Proof attracts higher-quality leads. Higher-quality leads close faster. The compounding accelerates.</p>
     </div>
 
-    <div class="arch-card ac">
+    <div class="arch-card green-bar">
       <div class="arch-label green">Reinvestment Loop</div>
       <h3>Commission → Lead Gen → More Deals</h3>
-      <p>Commission income reinvested into lead generation grows the external buyer pipeline. Those clients close. Some convert to TDG investors via post-close activation. TDG does more deals. Javier represents those deals. More commission generated. Each dollar of commission that re-enters the top of the funnel produces more than one dollar of future commission — because the trust and track record from prior rotations reduce acquisition cost.</p>
+      <p>Commission income reinvested into lead generation grows the external buyer pipeline. Those clients close. Some convert to TDG investors via post-close activation. TDG does more deals. Javier represents those deals. More commission generated. Each dollar of commission that re-enters the top of the funnel produces more than one dollar of future commission.</p>
     </div>
 
-    <div class="arch-card gd full">
+    <div class="arch-card gold-bar full">
       <div class="arch-label gold">Compounding Asset</div>
       <h3>Trust & Track Record</h3>
-      <p>The asset that accumulates with every rotation of this flywheel is trust — verified by closed deals, validated by REAP analytics, amplified by Suarez Global content, and compounded by referrals. Trust is the hardest asset for a competitor to replicate because it cannot be purchased, shortcut, or faked. It can only be built through consistent, directionally aligned effort over time. Each rotation leaves behind more trust than the rotation before it. This is what separates a flywheel from a treadmill — the loop doesn't just run, it accumulates.</p>
+      <p>The asset that accumulates with every rotation is trust — verified by closed deals, validated by REAP analytics, amplified by Suarez Global content, and compounded by referrals. Trust is the hardest asset for a competitor to replicate because it cannot be purchased, shortcut, or faked. It can only be built through consistent, directionally aligned effort over time. Each rotation leaves behind more trust than the rotation before it. This is what separates a flywheel from a treadmill — the loop doesn't just run, it accumulates.</p>
     </div>
 
   </div>
 </div>
 
-<!-- ════════════════════════════════════════════ -->
-<!-- SECTION 5: CAUSAL INTEGRITY CHECK           -->
-<!-- ════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION 5: CAUSAL ARROW INTEGRITY          -->
+<!-- ═══════════════════════════════════════════ -->
 <div class="section">
   <div class="section-tag">Causal Arrow Integrity</div>
   <div class="bottom-grid">
 
     <div class="bot-card">
       <div class="bot-label">Node 1 → Node 2</div>
-      <div class="bot-val"><strong>Educated buyer executes faster.</strong> Financial picture mapped, strategy locked, expectations set. Lender arrives warm. Fewer failed offers, shorter cycle times, higher win rate on offers.</div>
+      <div class="bot-val"><strong>Educated buyer executes faster.</strong> Financial picture mapped, strategy locked, expectations set. Lender arrives warm. Fewer failed offers, shorter cycle times, higher win rate.</div>
     </div>
 
     <div class="bot-card">
@@ -492,7 +498,7 @@ body::after {
 
     <div class="bot-card">
       <div class="bot-label">Node 3 → Node 4</div>
-      <div class="bot-val"><strong>Peak trust meets systematic process.</strong> Closed buyer has maximum trust, capital deployed, and real estate on their mind. Activation sequence meets them at their most receptive moment.</div>
+      <div class="bot-val"><strong>Peak trust meets systematic process.</strong> Closed buyer has maximum trust, capital deployed, and real estate on their mind. The activation sequence meets them at their most receptive moment.</div>
     </div>
 
     <div class="bot-card">
@@ -501,13 +507,13 @@ body::after {
     </div>
 
     <div class="bot-card full">
-      <div class="bot-label">Node 5 → Node 1 (The Reinforcing Return)</div>
+      <div class="bot-label">Node 5 → Node 1 — The Reinforcing Return</div>
       <div class="bot-val"><strong>Referred leads arrive warmer than the last generation.</strong> They already trust the brand. They convert faster. They need less education. Repeat buyers skip early positioning entirely. The flywheel doesn't just maintain speed — it accelerates, because the input quality at Node 1 improves with every rotation. This is the compounding mechanism.</div>
     </div>
 
   </div>
 </div>
 
-</div><!-- /page -->
+</div>
 </body>
 </html>
