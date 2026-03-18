@@ -28,6 +28,18 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;ove
 .hero-bottom{font-family:'Bebas Neue',sans-serif;font-size:clamp(1rem,2vw,1.3rem);letter-spacing:.15em;color:var(--gold);margin-top:2.5rem;opacity:0;animation:fadeUp .8s .9s forwards;display:flex;align-items:center;gap:.5rem}
 .hero-bottom .pulse{width:10px;height:10px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
 .scroll-cta{position:absolute;bottom:2rem;opacity:0;animation:fadeUp .8s 1.2s forwards}
+
+/* DOWNLOAD BUTTONS */
+.dl-btns{display:flex;gap:1rem;margin-top:2rem;opacity:0;animation:fadeUp .8s 1.1s forwards;flex-wrap:wrap;justify-content:center}
+.dl-btn{display:inline-flex;align-items:center;gap:.6rem;font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:.75rem 1.8rem;border-radius:100px;transition:all .35s;position:relative;overflow:hidden}
+.dl-btn::before{content:'';position:absolute;inset:0;border-radius:100px;opacity:0;transition:opacity .35s}
+.dl-btn:hover::before{opacity:1}
+.dl-btn:hover{transform:translateY(-2px)}
+.dl-btn-doc{background:rgba(179,136,255,0.12);border:1px solid rgba(179,136,255,0.4);color:var(--accent)}
+.dl-btn-doc:hover{background:var(--accent);color:#000;border-color:var(--accent);box-shadow:0 0 30px rgba(179,136,255,0.3)}
+.dl-btn-pdf{background:rgba(255,23,68,0.1);border:1px solid rgba(255,23,68,0.4);color:var(--t)}
+.dl-btn-pdf:hover{background:var(--t);color:#fff;border-color:var(--t);box-shadow:0 0 30px rgba(255,23,68,0.3)}
+.dl-btn svg{width:16px;height:16px;fill:currentColor;flex-shrink:0}
 .scroll-cta span{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
 .scroll-cta .arrow{display:block;margin:0.5rem auto 0;width:20px;height:20px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);animation:bounce 2s infinite}
 
@@ -39,6 +51,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;ove
 .nav a[data-c="o"]{border:1px solid rgba(0,176,255,0.3)}.nav a[data-c="o"]:hover{background:var(--o);color:#000}
 .nav a[data-c="t"]{border:1px solid rgba(255,23,68,0.3)}.nav a[data-c="t"]:hover{background:var(--t);color:#fff}
 .nav a[data-c="x"]{border:1px solid rgba(255,214,0,0.3)}.nav a[data-c="x"]:hover{background:var(--gold);color:#000}
+.nav a[data-c="d"]:hover{transform:scale(1.05)}
 
 /* SECTIONS */
 .section{padding:5rem 2rem;max-width:1200px;margin:0 auto}
@@ -163,6 +176,16 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;ove
   <h1>JAVIER SUAREZ<br>SWOT COMMAND CENTER</h1>
   <h2>Your battlefield. Your blueprint. Your breakthrough.</h2>
   <div class="hero-bottom"><span class="pulse"></span> LIVE ANALYSIS — 2026</div>
+  <div class="dl-btns">
+    <a href="https://docs.google.com/document/d/1BX_ylZGT0NaGBcO0Fw_PAYzZIc0SgDE-RBTSe-_PyCI/edit?tab=t.0" target="_blank" class="dl-btn dl-btn-doc">
+      <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 20V4h7v5h5v11H6zM8 12h8v2H8v-2zm0 4h8v2H8v-2zm0-8h4v2H8V8z"/></svg>
+      Word Doc
+    </a>
+    <a href="https://drive.google.com/file/d/1NO3xTbHaqIHuhrCBFvwwn9BYpox7gnEE/view?usp=share_link" target="_blank" class="dl-btn dl-btn-pdf">
+      <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 20V4h7v5h5v11H6zm2-5.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5S10.33 16 9.5 16 8 15.33 8 14.5zm4-2c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v3c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5v-3z"/></svg>
+      Visual PDF
+    </a>
+  </div>
   <div class="scroll-cta">
     <span>Scroll to deploy</span>
     <div class="arrow"></div>
@@ -177,6 +200,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;ove
   <a href="#opportunities" data-c="o">Opportunities</a>
   <a href="#threats" data-c="t">Threats</a>
   <a href="#action" data-c="x">Action Plan</a>
+  <a href="https://docs.google.com/document/d/1BX_ylZGT0NaGBcO0Fw_PAYzZIc0SgDE-RBTSe-_PyCI/edit?tab=t.0" target="_blank" data-c="d" style="border:1px solid rgba(179,136,255,0.5);color:var(--accent)">📄 Doc</a>
+  <a href="https://drive.google.com/file/d/1NO3xTbHaqIHuhrCBFvwwn9BYpox7gnEE/view?usp=share_link" target="_blank" data-c="d" style="border:1px solid rgba(255,23,68,0.5);color:var(--t)">📕 PDF</a>
 </nav>
 
 <!-- OVERVIEW QUADRANT -->
@@ -515,6 +540,7 @@ function switchTab(e, id) {
 // Smooth scroll for nav
 document.querySelectorAll('.nav a').forEach(a => {
   a.addEventListener('click', e => {
+    if (a.getAttribute('target') === '_blank') return;
     e.preventDefault();
     document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
   });
