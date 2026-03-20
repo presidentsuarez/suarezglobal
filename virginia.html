@@ -173,6 +173,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 /* ═══════════════════════════════════════════════ */
 
 .hero{min-height:100vh;display:flex;align-items:flex-end;position:relative;overflow:hidden;padding:10rem 4rem 5rem;background:linear-gradient(155deg,#0d1f0f 0%,#0a1a0c 55%,#080f09 100%);}
+.hero-bg-img{position:absolute;inset:0;z-index:0;background:url('https://www.suarezglobal.com/4214hero.jpg') center/cover no-repeat;opacity:0.35;pointer-events:none;}
+.hero-bg-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,31,15,0.15) 0%,rgba(13,31,15,0.45) 35%,rgba(13,31,15,0.85) 70%,#0d1f0f 100%);}
 .hero-glow{position:absolute;right:0;top:0;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(45,107,53,0.18) 0%,transparent 60%);pointer-events:none;}
 .hero-glow2{position:absolute;left:-10%;bottom:-10%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.06) 0%,transparent 65%);pointer-events:none;}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.04) 1px,transparent 1px);background-size:80px 80px;}
@@ -207,14 +209,18 @@ h1 em{font-style:italic;color:var(--gold-light);}
 .section-body{font-size:0.93rem;line-height:1.8;color:var(--text-muted);margin-bottom:2rem;}
 
 /* VISION BOARD */
-.vision-board{background:#0d1f0f;padding:4rem 4rem 2rem;position:relative;}
-.vb-frame{border:1px solid var(--border);padding:4px;position:relative;max-width:1200px;margin:0 auto;}
-.vb-frame::before,.vb-frame::after{content:'';position:absolute;width:20px;height:20px;border-color:var(--gold);border-style:solid;z-index:2;}
+.vision-board{background:#0d1f0f;padding:5rem 4rem 3rem;position:relative;}
+.vb-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:center;max-width:1100px;margin:0 auto;}
+.vb-text .section-eyebrow{margin-bottom:1rem;}
+.vb-text .section-title{margin-bottom:1rem;}
+.vb-desc{font-size:0.88rem;color:var(--text-muted);line-height:1.8;margin-bottom:0;}
+.vb-frame{border:1px solid var(--border);padding:4px;position:relative;}
+.vb-frame::before,.vb-frame::after{content:'';position:absolute;width:16px;height:16px;border-color:var(--gold);border-style:solid;z-index:2;}
 .vb-frame::before{top:-1px;left:-1px;border-width:2px 0 0 2px;}
 .vb-frame::after{bottom:-1px;right:-1px;border-width:0 2px 2px 0;}
 .vb-frame img{width:100%;display:block;opacity:0.95;transition:opacity 0.4s;}
 .vb-frame:hover img{opacity:1;}
-.vb-label{text-align:center;margin-top:1.2rem;font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-muted);}
+@media(max-width:900px){.vb-layout{grid-template-columns:1fr;gap:2rem;}}
 
 /* PRESENTATION */
 .presentation{background:#132716;padding:6rem 4rem;position:relative;overflow:hidden;}
@@ -440,7 +446,7 @@ footer{background:#070e08;padding:2.5rem 4rem;border-top:1px solid var(--border)
     <div class="dr-grid">
 
       <!-- 1 — PSA Documents -->
-      <a href="https://drive.google.com/file/d/1ksQ-PY_B4JE8DXfrWyJJwBE8dNBIBS1B/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="dr-card">
+      <a href="https://drive.google.com/file/d/1ksQ-PY_B4JE8DXfrWyJJwBE8dNBIBS1B/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" class="dr-card">
         <div class="dr-card-glow"></div>
         <div class="dr-card-num">01</div>
         <div class="dr-card-icon">
@@ -539,6 +545,7 @@ footer{background:#070e08;padding:2.5rem 4rem;border-top:1px solid var(--border)
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-bg-img"></div>
   <div class="hero-glow"></div><div class="hero-glow2"></div><div class="hero-grid"></div>
   <div class="hero-stripe"></div><div class="hero-stripe2"></div>
   <div class="hero-content">
@@ -564,10 +571,16 @@ footer{background:#070e08;padding:2.5rem 4rem;border-top:1px solid var(--border)
 
 <!-- VISION BOARD -->
 <section class="vision-board reveal">
-  <div class="vb-frame">
-    <img src="https://www.suarezglobal.com/vaboard.png" alt="4214 W Virginia Ave — Vision Board" loading="lazy">
+  <div class="vb-layout">
+    <div class="vb-text">
+      <div class="section-eyebrow">Repositioning Vision</div>
+      <h2 class="section-title">From Underperforming<br>to <em>Institutional-Grade.</em></h2>
+      <p class="vb-desc">The vision is clear — transform a 45,560 SF legacy industrial asset into a modern, fully leased multi-tenant facility positioned for institutional acquisition. Exterior upgrades include new metal paneling, fresh paint, updated signage, and improved curb appeal across all street-facing elevations. Interior repositioning targets Class A warehouse and flex finishes at $24/SF NNN — a standard Drew Park institutional buyers are actively pursuing.</p>
+    </div>
+    <div class="vb-frame">
+      <img src="https://www.suarezglobal.com/vaboard.png" alt="4214 W Virginia Ave — Industrial Repositioning Vision Board" loading="lazy">
+    </div>
   </div>
-  <div class="vb-label">Value-Add Vision Board — 4214 W Virginia Ave Industrial Repositioning</div>
 </section>
 <div class="divider"><div class="divider-line"></div><div class="divider-mark"></div><div class="divider-line"></div></div>
 
