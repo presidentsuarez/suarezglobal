@@ -172,7 +172,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 
 /* ═══════════════════════════════════════════════ */
 
-.hero{min-height:100vh;display:flex;align-items:flex-end;position:relative;overflow:hidden;padding:10rem 4rem 5rem;background:linear-gradient(155deg,#0d1f0f 0%,#0a1a0c 55%,#080f09 100%);}
+.hero{min-height:100vh;display:flex;align-items:flex-end;position:relative;padding:10rem 4rem 5rem;background:linear-gradient(155deg,#0d1f0f 0%,#0a1a0c 55%,#080f09 100%);}
 .hero-bg-img{position:absolute;inset:0;z-index:0;background:url('https://www.suarezglobal.com/4214hero.jpg') center/cover no-repeat;opacity:0.35;pointer-events:none;}
 .hero-bg-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,31,15,0.15) 0%,rgba(13,31,15,0.45) 35%,rgba(13,31,15,0.85) 70%,#0d1f0f 100%);}
 .hero-glow{position:absolute;right:0;top:0;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(45,107,53,0.18) 0%,transparent 60%);pointer-events:none;}
@@ -194,7 +194,10 @@ h1 em{font-style:italic;color:var(--gold-light);}
 .hero-meta-item:last-child{border-right:none;}
 .meta-label{font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted);}
 .meta-value{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--gold-light);}
-.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp 0.7s 0.5s ease both;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp 0.7s 0.5s ease both;padding-bottom:0.5rem;}
+.btn-sponsor{font-size:0.72rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:1rem 2.4rem;text-decoration:none;display:inline-flex;align-items:center;gap:0.6rem;transition:all 0.3s;background:rgba(201,168,76,0.08);}
+.btn-sponsor:hover{background:var(--gold);color:#0d1f0f;transform:translateY(-2px);box-shadow:0 12px 40px rgba(201,168,76,0.28);}
+.btn-sponsor svg{width:16px;height:16px;fill:currentColor;transition:fill 0.3s;}
 .btn-primary{font-size:0.72rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#0d1f0f;background:var(--gold);padding:1rem 2.4rem;text-decoration:none;display:inline-block;transition:background 0.3s,transform 0.2s,box-shadow 0.3s;border:none;cursor:pointer;font-family:inherit;}
 .btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 12px 40px rgba(201,168,76,0.28);}
 .btn-secondary{font-size:0.72rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#f8f3ea;border:1px solid var(--border);padding:1rem 2.4rem;text-decoration:none;display:inline-block;transition:border-color 0.3s,color 0.3s,transform 0.2s;}
@@ -564,7 +567,7 @@ footer{background:#070e08;padding:2.5rem 4rem;border-top:1px solid var(--border)
     <div class="hero-actions">
       <a href="#presentation" class="btn-primary">View Full Deck</a>
       <a href="#contact" class="btn-secondary">Request Investor Package</a>
-      <a href="https://www.suarezglobal.com/javier.html" target="_blank" rel="noopener noreferrer" class="btn-secondary">Meet the Sponsor</a>
+      <a href="https://www.suarezglobal.com/javier.html" target="_blank" rel="noopener noreferrer" class="btn-sponsor"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>Meet the Sponsor</a>
     </div>
   </div>
 </section>
