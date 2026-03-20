@@ -340,198 +340,11 @@ section { padding: 7rem 4rem; }
   color: var(--text-muted);
 }
 
-/* ── Spotlight Case Study ── */
-.tr-spotlight {
-  border: 1px solid var(--border);
-  background: linear-gradient(135deg, rgba(31,77,36,0.25) 0%, rgba(13,31,15,0.5) 100%);
-  padding: 3.5rem;
-  margin-bottom: 4rem;
-  position: relative; overflow: hidden;
-}
-.tr-spotlight::before {
-  content: 'FEATURED DEAL';
-  position: absolute; top: 1.8rem; right: 2rem;
-  font-size: 0.58rem; letter-spacing: 0.35em;
-  color: var(--gold); opacity: 0.7;
-}
-.tr-spotlight-badge {
-  display: inline-flex; align-items: center; gap: 0.6rem;
-  font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
-  color: var(--gold); border: 1px solid rgba(201,168,76,0.3);
-  padding: 0.35rem 1rem; margin-bottom: 1.5rem;
-}
-.tr-spotlight-badge span { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; display: block; }
-.tr-spotlight-title {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 300; color: var(--cream);
-  line-height: 1.2; margin-bottom: 0.5rem;
-}
-.tr-spotlight-title em { font-style: italic; color: var(--gold-light); }
-.tr-spotlight-addr {
-  font-size: 0.78rem; color: var(--text-muted); letter-spacing: 0.08em;
-  margin-bottom: 2rem;
-}
-.tr-spotlight-grid {
-  display: grid; grid-template-columns: repeat(5, 1fr);
-  gap: 0; border: 1px solid var(--border);
-  margin-bottom: 2rem;
-}
-.tr-spotlight-metric {
-  padding: 1.4rem 1.2rem;
-  border-right: 1px solid var(--border);
-  text-align: center;
-}
-.tr-spotlight-metric:last-child { border-right: none; }
-.tsm-value {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.9rem; font-weight: 300; color: var(--gold-light); line-height: 1;
-  margin-bottom: 0.3rem;
-}
-.tsm-label {
-  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--text-muted);
-}
-.tr-spotlight-desc {
-  font-size: 0.9rem; line-height: 1.78; color: var(--text-muted);
-  max-width: 780px;
-}
-.tr-spotlight-desc strong { color: var(--cream); font-weight: 500; }
 
-/* ── Deal Table ── */
-.tr-table-header {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 1.5rem;
-}
-.tr-table-title {
-  font-family: 'Cinzel', Georgia, serif;
-  font-size: 0.78rem; letter-spacing: 0.14em;
-  color: var(--gold-light); text-transform: uppercase;
-}
-.tr-table-tag {
-  font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--text-muted); border: 1px solid var(--border);
-  padding: 0.3rem 0.8rem;
-}
-
-.tr-table-wrap {
-  border: 1px solid var(--border);
-  overflow-x: auto;
-  margin-bottom: 4rem;
-}
-.tr-table {
-  width: 100%; border-collapse: collapse;
-  font-size: 0.82rem;
-}
-.tr-table thead tr {
-  background: rgba(201,168,76,0.07);
-  border-bottom: 1px solid var(--border);
-}
-.tr-table thead th {
-  padding: 1rem 1.2rem;
-  text-align: left;
-  font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--gold); font-weight: 500;
-  white-space: nowrap;
-}
-.tr-table tbody tr {
-  border-bottom: 1px solid rgba(201,168,76,0.06);
-  transition: background 0.25s;
-}
-.tr-table tbody tr:last-child { border-bottom: none; }
-.tr-table tbody tr:hover { background: rgba(201,168,76,0.04); }
-.tr-table td {
-  padding: 0.95rem 1.2rem;
-  color: var(--text-muted);
-  vertical-align: middle;
-}
-.tr-table td:first-child { color: var(--cream); font-weight: 400; }
-.tr-table .td-profit {
-  color: #6dbb7a; font-weight: 500;
-}
-.tr-table .td-badge {
-  display: inline-block;
-  font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase;
-  padding: 0.2rem 0.6rem;
-  border-radius: 2px;
-}
 .badge-rehab { background: rgba(45,107,53,0.4); color: #6dbb7a; }
 .badge-new { background: rgba(201,168,76,0.15); color: var(--gold-light); }
 .badge-hold { background: rgba(138,158,140,0.15); color: var(--text-muted); }
 .badge-flip { background: rgba(201,168,76,0.1); color: var(--gold); }
-
-/* ── Active Portfolio Cards ── */
-.tr-active-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1px; background: var(--border);
-  border: 1px solid var(--border);
-}
-.tr-active-card {
-  background: var(--green-deep);
-  padding: 2.2rem;
-  position: relative; overflow: hidden;
-  transition: background 0.35s;
-}
-.tr-active-card:hover { background: var(--green-mid); }
-.tac-status {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
-  color: #6dbb7a; margin-bottom: 1.2rem;
-}
-.tac-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: #6dbb7a;
-  animation: pulse 2s infinite;
-}
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.8); }
-}
-.tac-addr {
-  font-size: 0.95rem; color: var(--cream); font-weight: 500;
-  margin-bottom: 0.4rem; line-height: 1.3;
-}
-.tac-entity {
-  font-size: 0.72rem; color: var(--text-muted);
-  margin-bottom: 1.4rem; letter-spacing: 0.04em;
-}
-.tac-metrics {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 0.8rem;
-}
-.tac-metric-item { }
-.tac-mv {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.3rem; font-weight: 300; color: var(--gold-light);
-}
-.tac-ml {
-  font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--text-muted); margin-top: 0.1rem;
-}
-
-/* ── Asset Type Legend ── */
-.tr-asset-bar {
-  display: flex; gap: 0; margin-top: 4rem;
-  border: 1px solid var(--border);
-  overflow: hidden;
-}
-.tr-asset-seg {
-  flex: 1;
-  padding: 1.6rem 1.4rem;
-  border-right: 1px solid var(--border);
-  transition: background 0.3s;
-}
-.tr-asset-seg:last-child { border-right: none; }
-.tr-asset-seg:hover { background: rgba(201,168,76,0.04); }
-.tr-asset-icon {
-  font-size: 0.9rem; color: var(--gold); margin-bottom: 0.6rem;
-}
-.tr-asset-name {
-  font-size: 0.72rem; font-weight: 500; color: var(--cream);
-  margin-bottom: 0.2rem;
-}
-.tr-asset-count {
-  font-size: 0.62rem; color: var(--text-muted); letter-spacing: 0.1em;
-}
 
 /* ───── MISSION ───── */
 .mission {
@@ -692,6 +505,54 @@ footer {
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
+/* ── Asset Showcase Cards ── */
+.asset-showcases {
+  display: flex; flex-direction: column; gap: 1px;
+  background: var(--border); border: 1px solid var(--border);
+  margin-top: 4rem;
+}
+.asset-showcase {
+  background: var(--green-deep); padding: 2.8rem 3rem;
+  transition: background 0.35s;
+}
+.asset-showcase:hover { background: rgba(26,58,30,0.7); }
+.asset-showcase-pending { opacity: 0.6; }
+.asset-showcase-pending:hover { background: var(--green-deep); opacity: 0.75; }
+.asset-showcase-label { display: flex; align-items: center; gap: 1.4rem; margin-bottom: 2rem; }
+.asset-showcase-tag {
+  font-size: 0.62rem; letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--gold); border: 1px solid rgba(201,168,76,0.3);
+  padding: 0.3rem 1rem; white-space: nowrap; flex-shrink: 0;
+}
+.asset-showcase-line { flex: 1; height: 1px; background: var(--border); }
+.asset-showcase-inner {
+  display: grid; grid-template-columns: 1fr 280px;
+  gap: 3.5rem; align-items: start;
+}
+.asset-showcase-addr {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.5rem; font-weight: 300; color: var(--cream);
+  margin-bottom: 0.3rem; line-height: 1.2;
+}
+.asset-showcase-city { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.06em; margin-bottom: 1.2rem; }
+.asset-showcase-desc { font-size: 0.88rem; line-height: 1.82; color: var(--text-muted); margin-bottom: 1.4rem; max-width: 640px; }
+.asset-showcase-badges { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.asset-showcase-metrics {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--border); border: 1px solid var(--border); align-self: start;
+}
+.asset-showcase-metric { background: rgba(13,31,15,0.7); padding: 1.4rem 1.2rem; text-align: center; transition: background 0.3s; }
+.asset-showcase-metric.highlight { background: rgba(201,168,76,0.07); }
+.asset-showcase:hover .asset-showcase-metric { background: rgba(26,58,30,0.5); }
+.asset-showcase:hover .asset-showcase-metric.highlight { background: rgba(201,168,76,0.1); }
+.asm-val {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.9rem; font-weight: 300; color: var(--gold-light);
+  line-height: 1; margin-bottom: 0.3rem;
+}
+.asset-showcase-metric.highlight .asm-val { color: var(--gold); }
+.asm-lbl { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
+
 /* ═══════════════════════════════════════════
    MOBILE
    ═══════════════════════════════════════════ */
@@ -745,13 +606,9 @@ footer {
   /* Track Record mobile */
   .track-record-header { grid-template-columns: 1fr; gap: 1.5rem; }
   .tr-kpi-strip { grid-template-columns: repeat(2, 1fr); }
-  .tr-spotlight { padding: 2rem 1.5rem; }
-  .tr-spotlight-grid { grid-template-columns: repeat(3, 1fr); }
-  .tr-spotlight-metric:nth-child(4),
-  .tr-spotlight-metric:nth-child(5) { border-top: 1px solid var(--border); }
-  .tr-active-grid { grid-template-columns: 1fr; }
-  .tr-asset-bar { flex-wrap: wrap; }
-  .tr-asset-seg { flex: calc(50% - 1px); border-bottom: 1px solid var(--border); }
+  .asset-showcase { padding: 2rem 1.5rem; }
+  .asset-showcase-inner { grid-template-columns: 1fr !important; gap: 2rem; }
+  .asset-showcase-metrics { grid-template-columns: repeat(2, 1fr) !important; }
   /* Mission */
   .mission { padding: 5rem 1.5rem; }
   .mission-number { font-size: clamp(3.5rem, 15vw, 6rem); }
@@ -765,7 +622,10 @@ footer {
   footer { flex-direction: column; align-items: center; text-align: center; padding: 2rem 1.5rem; }
 }
 
-@media (max-width: 420px) {
+  .asset-showcase { padding: 2rem 1.5rem; }
+  .asset-showcase-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .asset-showcase-metrics { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 420px) {
   .hero-content { padding: 5.5rem 1.2rem 1.5rem; }
   .hero-mobile-photo { width: 150px; height: 150px; }
   .hero h1 { font-size: 2.5rem; }
@@ -774,9 +634,7 @@ footer {
   .stat-number { font-size: 1.5rem; }
   .ventures-grid { grid-template-columns: 1fr; }
   .values-grid { grid-template-columns: 1fr; }
-  .tr-kpi-strip { grid-template-columns: 1fr 1fr; }
-  .tr-spotlight-grid { grid-template-columns: repeat(2, 1fr); }
-  .tr-spotlight-metric { border-right: none; border-bottom: 1px solid var(--border); }
+  .asset-showcase-metrics { grid-template-columns: repeat(2, 1fr) !important; }
 }
 </style>
 </head>
@@ -812,7 +670,7 @@ footer {
       Institutional-grade real estate intelligence, proprietary technology, and a mission to impact one million Cuban lives by 2043.
     </p>
     <div class="hero-actions">
-      <a href="mailto:javier@thesuarezcapital.com" class="btn-primary">Get In Touch</a>
+      <a href="/cdn-cgi/l/email-protection#5d373c2b34382f1d2935382e283c2f38273e3c2d34293c31733e3230" class="btn-primary">Get In Touch</a>
       <a href="#story" class="btn-secondary">Read My Story</a>
     </div>
     <div class="hero-stats-row">
@@ -938,12 +796,12 @@ footer {
   <div class="track-record-header">
     <div class="track-record-intro">
       <div class="section-eyebrow">Verified Performance</div>
-      <h2 class="section-title">Real Estate<br><em>Track Record</em></h2>
-      <p>Every deal below is documented, closed, and verified. From full-gut rehabs in Tampa to a commercial repositioning that generated a 107% IRR — this is the proof of process, not promises.</p>
+      <h2 class="section-title">Proven Across<br><em>Every Asset Class</em></h2>
+      <p>Single-family. Multifamily. Commercial. The same disciplined underwriting, operational precision, and capital strategy — applied across every property type in the Southeastern U.S. market. This is the proof of process, not promises.</p>
     </div>
     <div style="text-align:right;">
-      <div style="font-family:'Cormorant Garamond',serif; font-size:4rem; font-weight:300; color:var(--gold-light); line-height:1;">$1.34M+</div>
-      <div style="font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--text-muted); margin-top:0.3rem;">Total Documented Flip Profit</div>
+      <div style="font-family:'Cormorant Garamond',serif; font-size:4rem; font-weight:300; color:var(--gold-light); line-height:1;">3</div>
+      <div style="font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--text-muted); margin-top:0.3rem;">Asset Classes Mastered</div>
       <div style="margin-top:1.5rem; font-family:'Cormorant Garamond',serif; font-size:4rem; font-weight:300; color:var(--gold-light); line-height:1;">SE US</div>
       <div style="font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--text-muted); margin-top:0.3rem;">Primary Market</div>
     </div>
@@ -952,332 +810,175 @@ footer {
   <!-- KPI Strip -->
   <div class="tr-kpi-strip">
     <div class="tr-kpi">
-      <div class="tr-kpi-value">15+</div>
-      <div class="tr-kpi-label">Closed Transactions</div>
+      <div class="tr-kpi-value">SFR</div>
+      <div class="tr-kpi-label">Single-Family</div>
+    </div>
+    <div class="tr-kpi">
+      <div class="tr-kpi-value">Multi</div>
+      <div class="tr-kpi-label">12-Unit Portfolio</div>
     </div>
     <div class="tr-kpi">
       <div class="tr-kpi-value">107%</div>
-      <div class="tr-kpi-label">Peak Deal IRR</div>
+      <div class="tr-kpi-label">Commercial IRR</div>
     </div>
     <div class="tr-kpi">
       <div class="tr-kpi-value">4.3x</div>
-      <div class="tr-kpi-label">Best Equity Multiple</div>
-    </div>
-    <div class="tr-kpi">
-      <div class="tr-kpi-value">90+</div>
-      <div class="tr-kpi-label">Units Owned / Managed</div>
+      <div class="tr-kpi-label">Peak Equity Multiple</div>
     </div>
   </div>
 
-  <!-- Featured Case Study Spotlight -->
-  <div class="tr-spotlight">
-    <div class="tr-spotlight-badge"><span></span>Featured Deal — Commercial Repositioning</div>
-    <h3 class="tr-spotlight-title">$2M Acquisition → <em>$4.9M Exit</em><br>in 19 Months</h3>
-    <div class="tr-spotlight-addr">3118 Gulf to Bay Blvd., Clearwater, FL &nbsp;·&nbsp; GTB Equity Group LLC (a Suarez Capital Company) &nbsp;·&nbsp; Mixed-Use Commercial &nbsp;·&nbsp; 53 Units &nbsp;·&nbsp; 23,000 SF</div>
-    <div class="tr-spotlight-grid">
-      <div class="tr-spotlight-metric">
-        <div class="tsm-value">$2M</div>
-        <div class="tsm-label">Acquisition Price</div>
-      </div>
-      <div class="tr-spotlight-metric">
-        <div class="tsm-value">$4.9M</div>
-        <div class="tsm-label">Exit Price</div>
-      </div>
-      <div class="tr-spotlight-metric">
-        <div class="tsm-value">107%</div>
-        <div class="tsm-label">IRR</div>
-      </div>
-      <div class="tr-spotlight-metric">
-        <div class="tsm-value">4.3x</div>
-        <div class="tsm-label">Equity Multiple</div>
-      </div>
-      <div class="tr-spotlight-metric">
-        <div class="tsm-value">19 Mo</div>
-        <div class="tsm-label">Hold Period</div>
-      </div>
-    </div>
-    <p class="tr-spotlight-desc">
-      Acquired March 2022 and exited October 2023. GTB Equity Group executed three strategic refinances totaling <strong>$1.45M in cash returned to investors pre-sale</strong>, fully repaying investor capital before the disposition event. Through disciplined NOI optimization, total revenue grew from $253,800 to $379,088 (+49.4%) while expenses were simultaneously reduced by 7%. Net Operating Income surged from $141,715 to <strong>$274,868 (+94%)</strong>, compressing the cap rate from 7.09% at acquisition to 5.61% at exit — producing a premium valuation. For every $1 invested, investors received <strong>$4.30 back</strong>.
-    </p>
-  </div>
+  <!-- ── ASSET CLASS SHOWCASES ── -->
+  <div class="asset-showcases">
 
-  <!-- Fix & Flip Deal Table -->
-  <div class="tr-table-header">
-    <div class="tr-table-title">Fix & Flip Transaction Log</div>
-    <div class="tr-table-tag">Tampa / St. Petersburg MSA · 2020–2021</div>
-  </div>
-  <div class="tr-table-wrap">
-    <table class="tr-table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Property Address</th>
-          <th>Acquired</th>
-          <th>Strategy</th>
-          <th>Acquisition</th>
-          <th>Rehab / Build</th>
-          <th>ARV / Sale Price</th>
-          <th>Profit</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>01</td>
-          <td>1508 E Ellicott, Tampa, FL</td>
-          <td>Jan 2020</td>
-          <td><span class="td-badge badge-rehab">Full Rehab</span></td>
-          <td>$83,000</td>
-          <td>$35,000</td>
-          <td>$159,000</td>
-          <td class="td-profit">$41,000</td>
-        </tr>
-        <tr>
-          <td>02</td>
-          <td>2745 4th Ave S, St. Petersburg, FL</td>
-          <td>Jul 2020</td>
-          <td><span class="td-badge badge-rehab">Full Rehab</span></td>
-          <td>$185,000</td>
-          <td>$45,500</td>
-          <td>$330,000</td>
-          <td class="td-profit">$99,500</td>
-        </tr>
-        <tr>
-          <td>03</td>
-          <td>2945 3rd Ave S, St. Petersburg, FL</td>
-          <td>Jul 2020</td>
-          <td><span class="td-badge badge-rehab">Full Rehab</span></td>
-          <td>$185,000</td>
-          <td>$45,000</td>
-          <td>$330,000</td>
-          <td class="td-profit">$100,000</td>
-        </tr>
-        <tr>
-          <td>04</td>
-          <td>4618 Redfish Ln SE, St. Petersburg, FL</td>
-          <td>Jul 2020</td>
-          <td><span class="td-badge badge-rehab">Full Rehab</span></td>
-          <td>$205,000</td>
-          <td>$45,000</td>
-          <td>$349,999</td>
-          <td class="td-profit">$99,999</td>
-        </tr>
-        <tr>
-          <td>05</td>
-          <td>1428 E Mohawk Ave, Tampa, FL</td>
-          <td>Sep 2020</td>
-          <td><span class="td-badge badge-rehab">Full Rehab</span></td>
-          <td>$256,000</td>
-          <td>$50,000</td>
-          <td>$425,000</td>
-          <td class="td-profit">$119,000</td>
-        </tr>
-        <tr>
-          <td>06</td>
-          <td>6114 S 3rd St, Tampa, FL</td>
-          <td>Aug 2020</td>
-          <td><span class="td-badge badge-new">New Construction</span></td>
-          <td>$300,000</td>
-          <td>$300,000</td>
-          <td>$1,200,000</td>
-          <td class="td-profit">$600,000</td>
-        </tr>
-        <tr>
-          <td>07</td>
-          <td>2820 W Bay Ave, Tampa, FL</td>
-          <td>Aug 2020</td>
-          <td><span class="td-badge badge-new">New Construction</span></td>
-          <td>$380,000</td>
-          <td>$250,000</td>
-          <td>$800,000</td>
-          <td class="td-profit">$170,000</td>
-        </tr>
-        <tr>
-          <td>08</td>
-          <td>1719 E River Cove, Tampa, FL</td>
-          <td>Oct 2020</td>
-          <td><span class="td-badge badge-rehab">Full Rehab</span></td>
-          <td>$129,443</td>
-          <td>$42,600</td>
-          <td>$225,000</td>
-          <td class="td-profit">$52,957</td>
-        </tr>
-        <tr>
-          <td>09</td>
-          <td>2609 E 22nd Ave, Tampa, FL</td>
-          <td>Oct 2020</td>
-          <td><span class="td-badge badge-rehab">Full Rehab</span></td>
-          <td>$122,439</td>
-          <td>$68,000</td>
-          <td>$250,000</td>
-          <td class="td-profit">$59,561</td>
-        </tr>
-        <tr>
-          <td>10</td>
-          <td>724 40th Ave S, St. Petersburg, FL</td>
-          <td>Dec 2024</td>
-          <td><span class="td-badge badge-flip">Same-Day Flip</span></td>
-          <td>$40,000</td>
-          <td>—</td>
-          <td>—</td>
-          <td class="td-profit">$20,000</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <!-- SINGLE FAMILY -->
+    <div class="asset-showcase">
+      <div class="asset-showcase-label">
+        <span class="asset-showcase-tag">Single-Family Residential</span>
+        <div class="asset-showcase-line"></div>
+      </div>
+      <div class="asset-showcase-inner">
+        <div class="asset-showcase-left">
+          <div class="asset-showcase-addr">4082 38th Ave N</div>
+          <div class="asset-showcase-city">St. Petersburg, FL &nbsp;·&nbsp; Skilled Property Finders LLC</div>
+          <p class="asset-showcase-desc">Acquired January 2025 in the appreciating 38th Ave corridor of St. Petersburg. Light interior renovation — kitchen refresh, updated bathrooms, new flooring, and cosmetic exterior work — executed on a disciplined $50K budget. Projected ARV of $320K against a $235K total cost basis delivers $85K in equity creation. A textbook example of identifying value-add SFR opportunities in a competitive coastal Florida submarket and executing with precision.</p>
+          <div class="asset-showcase-badges">
+            <span class="td-badge badge-rehab">Light Renovation</span>
+            <span class="td-badge badge-hold">Buy &amp; Sell</span>
+          </div>
+        </div>
+        <div class="asset-showcase-metrics">
+          <div class="asset-showcase-metric">
+            <div class="asm-val">$185K</div>
+            <div class="asm-lbl">Acquisition</div>
+          </div>
+          <div class="asset-showcase-metric">
+            <div class="asm-val">$50K</div>
+            <div class="asm-lbl">Renovation</div>
+          </div>
+          <div class="asset-showcase-metric">
+            <div class="asm-val">$320K</div>
+            <div class="asm-lbl">ARV</div>
+          </div>
+          <div class="asset-showcase-metric highlight">
+            <div class="asm-val">36%</div>
+            <div class="asm-lbl">Projected ROI</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <!-- Active / Recent Larger Projects -->
-  <div class="tr-table-header">
-    <div class="tr-table-title">Active & Recent Portfolio — Larger Assets</div>
-    <div class="tr-table-tag">2021–Present</div>
-  </div>
-  <div class="tr-active-grid">
-    <div class="tr-active-card">
-      <div class="tac-status"><div class="tac-dot"></div>Active — In Renovation</div>
-      <div class="tac-addr">4605 N Hubert Ave, Tampa, FL 33614</div>
-      <div class="tac-entity">Lavendar 8 LLC</div>
-      <div class="tac-metrics">
-        <div class="tac-metric-item">
-          <div class="tac-mv">24</div>
-          <div class="tac-ml">Total Units</div>
-        </div>
-        <div class="tac-metric-item">
-          <div class="tac-mv">9,000 SF</div>
-          <div class="tac-ml">Finished SF</div>
-        </div>
-        <div class="tac-metric-item">
-          <div class="tac-mv">$700K</div>
-          <div class="tac-ml">Construction Budget</div>
-        </div>
-        <div class="tac-metric-item">
-          <div class="tac-mv">8 Mo</div>
-          <div class="tac-ml">Build Timeline</div>
-        </div>
+    <!-- MULTIFAMILY -->
+    <div class="asset-showcase">
+      <div class="asset-showcase-label">
+        <span class="asset-showcase-tag">Multifamily</span>
+        <div class="asset-showcase-line"></div>
       </div>
-    </div>
-    <div class="tr-active-card">
-      <div class="tac-status"><div class="tac-dot"></div>Active — Under Contract</div>
-      <div class="tac-addr">4082 38th Ave N, St. Petersburg, FL 33713</div>
-      <div class="tac-entity">Skilled Property Finders LLC</div>
-      <div class="tac-metrics">
-        <div class="tac-metric-item">
-          <div class="tac-mv">SFH</div>
-          <div class="tac-ml">Asset Type</div>
-        </div>
-        <div class="tac-metric-item">
-          <div class="tac-mv">800 SF</div>
-          <div class="tac-ml">Finished SF</div>
-        </div>
-        <div class="tac-metric-item">
-          <div class="tac-mv">$50K</div>
-          <div class="tac-ml">Construction Budget</div>
-        </div>
-        <div class="tac-metric-item">
-          <div class="tac-mv">3 Mo</div>
-          <div class="tac-ml">Build Timeline</div>
-        </div>
-      </div>
-    </div>
-    <div class="tr-active-card">
-      <div class="tac-status" style="color:var(--gold);"><div class="tac-dot" style="background:var(--gold);"></div>Exited — Commercial Reposition</div>
-      <div class="tac-addr">3118 Gulf to Bay Blvd., Clearwater, FL 33759</div>
-      <div class="tac-entity">GTB Equity Group LLC — Suarez Capital Company</div>
-      <div class="tac-metrics">
-        <div class="tac-metric-item">
-          <div class="tac-mv">53</div>
-          <div class="tac-ml">Total Units</div>
-        </div>
-        <div class="tac-metric-item">
-          <div class="tac-mv">23,000 SF</div>
-          <div class="tac-ml">Finished SF</div>
-        </div>
-        <div class="tac-metric-item">
-          <div class="tac-mv">$4.9M</div>
-          <div class="tac-ml">Exit Price</div>
-        </div>
-        <div class="tac-metric-item">
-          <div class="tac-mv">107%</div>
-          <div class="tac-ml">IRR</div>
-        </div>
-      </div>
-    </div>
-    <div class="tr-active-card">
-      <div class="tac-status" style="color:var(--text-muted);"><div class="tac-dot" style="background:var(--text-muted); animation:none;"></div>Exited — Rental Portfolio</div>
-      <div class="tac-addr">North Marie Portfolio — N Marie Ave, Tampa, FL 33614</div>
-      <div class="tac-entity">Clear Skip LLC / North Marie Properties LLC</div>
-      <div class="tac-metrics">
-        <div class="tac-metric-item">
-          <div class="tac-mv">6</div>
-          <div class="tac-ml">Properties</div>
-        </div>
-        <div class="tac-metric-item">
-          <div class="tac-mv">12</div>
-          <div class="tac-ml">Total Units</div>
-        </div>
-        <div class="tac-metric-item">
-          <div class="tac-mv">$240K</div>
-          <div class="tac-ml">Total Rehab</div>
-        </div>
-        <div class="tac-metric-item">
-          <div class="tac-mv">6 Mo</div>
-          <div class="tac-ml">Hold to Stabilize</div>
-        </div>
-      </div>
-    </div>
-    <div class="tr-active-card" style="grid-column: span 2;" >
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:center;">
-        <div>
-          <div class="tac-status" style="color:var(--text-muted);"><div class="tac-dot" style="background:var(--text-muted); animation:none;"></div>Exited — Rental Hold</div>
-          <div class="tac-addr">6813–6823 N Marie Ave Duplex Portfolio, Tampa, FL</div>
-          <div class="tac-entity">Clear Skip LLC / North Marie Properties LLC &nbsp;·&nbsp; Feb 2021 – Oct 2021</div>
-          <div style="margin-top:1rem; font-size:0.85rem; color:var(--text-muted); line-height:1.7;">
-            Six contiguous duplex properties acquired and stabilized as a single rental portfolio. In-house management through disposition. Asset class: Multifamily Residential.
+      <div class="asset-showcase-inner">
+        <div class="asset-showcase-left">
+          <div class="asset-showcase-addr">6813–6823 N Marie Ave &nbsp;(6-Duplex Portfolio)</div>
+          <div class="asset-showcase-city">Tampa, FL &nbsp;·&nbsp; Clear Skip LLC / North Marie Properties LLC</div>
+          <p class="asset-showcase-desc">Six contiguous duplexes acquired as a single portfolio package in February 2021 — 12 residential units at approximately $175K per property. Each duplex received a targeted $40K renovation, then stabilized with tenants under third-party management for 8 months before a bundled disposition. The portfolio exit commanded a premium over individual asset sales. This deal proved the team's capacity to acquire, renovate, stabilize, and exit a multifamily portfolio at scale — a direct precursor to the institutional strategies that followed.</p>
+          <div class="asset-showcase-badges">
+            <span class="td-badge badge-rehab">Light Renovation</span>
+            <span class="td-badge badge-hold">Stabilize &amp; Sell</span>
           </div>
         </div>
-        <div class="tac-metrics" style="border-left:1px solid var(--border); padding-left:2rem;">
-          <div class="tac-metric-item">
-            <div class="tac-mv">6</div>
-            <div class="tac-ml">Duplexes</div>
+        <div class="asset-showcase-metrics">
+          <div class="asset-showcase-metric">
+            <div class="asm-val">$1.05M</div>
+            <div class="asm-lbl">Acquisition</div>
           </div>
-          <div class="tac-metric-item">
-            <div class="tac-mv">12</div>
-            <div class="tac-ml">Residential Units</div>
+          <div class="asset-showcase-metric">
+            <div class="asm-val">12</div>
+            <div class="asm-lbl">Units</div>
           </div>
-          <div class="tac-metric-item">
-            <div class="tac-mv">2,000 SF</div>
-            <div class="tac-ml">Per Property</div>
+          <div class="asset-showcase-metric">
+            <div class="asm-val">$1.4M</div>
+            <div class="asm-lbl">Exit Price</div>
           </div>
-          <div class="tac-metric-item">
-            <div class="tac-mv">3rd Party</div>
-            <div class="tac-ml">Management</div>
+          <div class="asset-showcase-metric highlight">
+            <div class="asm-val">$110K</div>
+            <div class="asm-lbl">Gross Profit</div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Asset Type Bar -->
-  <div class="tr-asset-bar" style="margin-top:4rem;">
-    <div class="tr-asset-seg">
-      <div class="tr-asset-icon">▲</div>
-      <div class="tr-asset-name">Single-Family</div>
-      <div class="tr-asset-count">Full Rehab · New Construction · Flip</div>
+    <!-- COMMERCIAL -->
+    <div class="asset-showcase" style="background: linear-gradient(135deg, rgba(26,58,30,0.5) 0%, var(--green-deep) 100%); border-left: 3px solid var(--gold);">
+      <div class="asset-showcase-label">
+        <span class="asset-showcase-tag" style="color:var(--gold-light); border-color:rgba(201,168,76,0.5);">Commercial — Mixed Use &nbsp;·&nbsp; Flagship Deal</span>
+        <div class="asset-showcase-line"></div>
+      </div>
+      <div class="asset-showcase-inner" style="grid-template-columns: 1fr 360px;">
+        <div class="asset-showcase-left">
+          <div class="asset-showcase-addr">3118 Gulf to Bay Blvd &nbsp;<em style="font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--gold-light);">53-Unit Mixed-Use</em></div>
+          <div class="asset-showcase-city">Clearwater, FL &nbsp;·&nbsp; GTB Equity Group LLC — a Suarez Capital Company &nbsp;·&nbsp; 23,000 SF</div>
+          <p class="asset-showcase-desc">Acquired March 2022 at $2M with $461K investor equity and a $1.76M institutional loan. Executed a full operational reposition — NOI grew from $141,715 to $274,868 (+94%), total revenue up 49.4%, operating expenses cut 7%. Three strategic refinances during the hold period returned all investor capital in full prior to the sale event. Exited October 2023 at $4.9M — a 19-month hold. For every $1 invested, investors received <strong style="color:var(--cream);">$4.30 back</strong>. The definitive proof-of-concept for Suarez Capital's institutional-grade value-add execution model.</p>
+          <div class="asset-showcase-badges">
+            <span class="td-badge badge-new">Value-Add Reposition</span>
+            <span class="td-badge badge-flip">3 Strategic Refinances</span>
+            <span class="td-badge badge-rehab">All Capital Returned Pre-Sale</span>
+          </div>
+        </div>
+        <div class="asset-showcase-metrics" style="grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr;">
+          <div class="asset-showcase-metric highlight" style="grid-column: span 3; background: rgba(201,168,76,0.1);">
+            <div class="asm-val" style="font-size:2.4rem;">$2M → $4.9M</div>
+            <div class="asm-lbl">Acquisition → Exit &nbsp;·&nbsp; 19 Months</div>
+          </div>
+          <div class="asset-showcase-metric">
+            <div class="asm-val">107%</div>
+            <div class="asm-lbl">IRR</div>
+          </div>
+          <div class="asset-showcase-metric">
+            <div class="asm-val">4.3x</div>
+            <div class="asm-lbl">Equity Multiple</div>
+          </div>
+          <div class="asset-showcase-metric highlight">
+            <div class="asm-val">330%</div>
+            <div class="asm-lbl">Total ROI</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="tr-asset-seg">
-      <div class="tr-asset-icon">◆</div>
-      <div class="tr-asset-name">Multifamily</div>
-      <div class="tr-asset-count">Duplexes · Small Apartment Portfolios</div>
+
+    <!-- RECENT ACQUISITION PLACEHOLDER -->
+    <div class="asset-showcase asset-showcase-pending">
+      <div class="asset-showcase-label">
+        <span class="asset-showcase-tag" style="color:var(--text-muted); border-color:rgba(138,158,140,0.25);">Recent Acquisition</span>
+        <div class="asset-showcase-line" style="background:rgba(138,158,140,0.15);"></div>
+      </div>
+      <div class="asset-showcase-inner">
+        <div class="asset-showcase-left">
+          <div class="asset-showcase-addr" style="color:var(--text-muted);">123 Main St &nbsp;<span style="font-size:0.7rem; letter-spacing:0.18em; font-family:'DM Sans',sans-serif; font-style:normal;">— Details Coming Soon</span></div>
+          <div class="asset-showcase-city" style="color:rgba(138,158,140,0.5);">Location TBD &nbsp;·&nbsp; Entity TBD</div>
+          <p class="asset-showcase-desc" style="color:rgba(138,158,140,0.5); font-style:italic;">Full deal details, financials, and executive summary to be added upon closing. This section will reflect acquisition price, renovation scope, projected returns, and strategy — consistent with the asset class showcases above.</p>
+          <div class="asset-showcase-badges">
+            <span class="td-badge" style="background:rgba(138,158,140,0.1); color:var(--text-muted);">Pending</span>
+          </div>
+        </div>
+        <div class="asset-showcase-metrics">
+          <div class="asset-showcase-metric" style="opacity:0.35;">
+            <div class="asm-val">—</div>
+            <div class="asm-lbl">Acquisition</div>
+          </div>
+          <div class="asset-showcase-metric" style="opacity:0.35;">
+            <div class="asm-val">—</div>
+            <div class="asm-lbl">Strategy</div>
+          </div>
+          <div class="asset-showcase-metric" style="opacity:0.35;">
+            <div class="asm-val">—</div>
+            <div class="asm-lbl">ARV</div>
+          </div>
+          <div class="asset-showcase-metric" style="opacity:0.35;">
+            <div class="asm-val">—</div>
+            <div class="asm-lbl">Projected ROI</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="tr-asset-seg">
-      <div class="tr-asset-icon">●</div>
-      <div class="tr-asset-name">Commercial</div>
-      <div class="tr-asset-count">Mixed-Use · Value-Add · Reposition</div>
-    </div>
-    <div class="tr-asset-seg">
-      <div class="tr-asset-icon">◇</div>
-      <div class="tr-asset-name">Large-Scale</div>
-      <div class="tr-asset-count">24+ Unit Renovation · 53-Unit Commercial</div>
-    </div>
-  </div>
+
+  </div><!-- /asset-showcases -->
 
 </section>
 
@@ -1337,7 +1038,7 @@ footer {
     <h2 class="contact-title">Ready to <em>Move</em><br>With Conviction?</h2>
     <p class="contact-sub">Whether you're an accredited investor, a strategic partner, or a client looking to buy, sell, or invest — let's build something together.</p>
     <div class="social-icons">
-      <a href="mailto:javier@thesuarezcapital.com" class="social-icon" aria-label="Email">
+      <a href="/cdn-cgi/l/email-protection#1872796e717d6a586c707d6b6d796a7d627b7968716c7974367b7775" class="social-icon" aria-label="Email">
         <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
       </a>
       <a href="https://suarezglobal.com" class="social-icon" aria-label="Website">
@@ -1373,7 +1074,7 @@ footer {
   <div class="footer-copy">&copy; 2026 Suarez Global, Inc. All rights reserved.</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   const reveals = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
@@ -1386,11 +1087,4 @@ footer {
 
   window.addEventListener('scroll', () => {
     const nav = document.getElementById('navbar');
-    nav.style.padding = window.scrollY > 60
-      ? (window.innerWidth > 900 ? '0.85rem 4rem' : '0.85rem 1.5rem')
-      : (window.innerWidth > 900 ? '1.4rem 4rem' : '1.1rem 1.5rem');
-  });
-</script>
-
-</body>
-</html>
+    nav.
