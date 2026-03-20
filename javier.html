@@ -537,6 +537,20 @@ footer {
 .asset-showcase-city { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.06em; margin-bottom: 1.2rem; }
 .asset-showcase-desc { font-size: 0.88rem; line-height: 1.82; color: var(--text-muted); margin-bottom: 1.4rem; max-width: 640px; }
 .asset-showcase-badges { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.asset-showcase-philosophy {
+  margin: 1.4rem 0 1.4rem;
+  padding: 1.4rem 1.6rem;
+  border-left: 2px solid var(--gold);
+  background: rgba(201,168,76,0.05);
+}
+.asp-eyebrow {
+  font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.6rem;
+}
+.asset-showcase-philosophy p {
+  font-size: 0.84rem; line-height: 1.78; color: var(--text-muted);
+  font-style: italic;
+}
 .asset-showcase-metrics {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 1px; background: var(--border); border: 1px solid var(--border); align-self: start;
@@ -807,12 +821,12 @@ footer {
   <!-- KPI Strip -->
   <div class="tr-kpi-strip">
     <div class="tr-kpi">
-      <div class="tr-kpi-value">SFR</div>
-      <div class="tr-kpi-label">Single-Family</div>
+      <div class="tr-kpi-value">4</div>
+      <div class="tr-kpi-label">Asset Classes</div>
     </div>
     <div class="tr-kpi">
-      <div class="tr-kpi-value">Multi</div>
-      <div class="tr-kpi-label">12-Unit Portfolio</div>
+      <div class="tr-kpi-value">9.3%</div>
+      <div class="tr-kpi-label">Cap Rate — Latest Deal</div>
     </div>
     <div class="tr-kpi">
       <div class="tr-kpi-value">107%</div>
@@ -827,38 +841,43 @@ footer {
   <!-- ── ASSET CLASS SHOWCASES ── -->
   <div class="asset-showcases">
 
-    <!-- SINGLE FAMILY -->
+    <!-- SINGLE FAMILY / WHOLESALE -->
     <div class="asset-showcase">
       <div class="asset-showcase-label">
-        <span class="asset-showcase-tag">Single-Family Residential</span>
+        <span class="asset-showcase-tag">Single-Family — Wholesale</span>
         <div class="asset-showcase-line"></div>
       </div>
       <div class="asset-showcase-inner">
         <div class="asset-showcase-left">
-          <div class="asset-showcase-addr">4082 38th Ave N</div>
-          <div class="asset-showcase-city">St. Petersburg, FL &nbsp;·&nbsp; Skilled Property Finders LLC</div>
-          <p class="asset-showcase-desc">Acquired January 2025 in the appreciating 38th Ave corridor of St. Petersburg. Light interior renovation — kitchen refresh, updated bathrooms, new flooring, and cosmetic exterior work — executed on a disciplined $50K budget. Projected ARV of $320K against a $235K total cost basis delivers $85K in equity creation. A textbook example of identifying value-add SFR opportunities in a competitive coastal Florida submarket and executing with precision.</p>
+          <div class="asset-showcase-addr">8734 N Tangerine Pl</div>
+          <div class="asset-showcase-city">Tampa, FL &nbsp;·&nbsp; Closed December 2025 &nbsp;·&nbsp; 7-Day Assignment</div>
+          <p class="asset-showcase-desc">Sourced off-market at $100K and assigned to a qualified buyer at $120K — closed in under a week, zero renovation required. The buyer deployed $40K in improvements and the property now carries an estimated value of $250K, creating $90K in equity for the buyer from day one. This is intentional. Suarez Capital's wholesale operation exists to broker high-quality deals at volume — feeding preferred buyers, generating deal flow for preferred lenders, and producing the capital and relationships that power our multifamily and commercial acquisition pipeline.</p>
+          <div class="asset-showcase-philosophy">
+            <div class="asp-eyebrow">The Philosophy</div>
+            <p>We broker deals to feed our multifamily and commercial ventures — which drives the local economy, supports our buyer clients, and allows us to transact at high volume. Every wholesale creates an opportunity: for a buyer to build equity, for a preferred lender to deploy capital, and for Suarez Capital to identify the next institutional play.</p>
+          </div>
           <div class="asset-showcase-badges">
-            <span class="td-badge badge-rehab">Light Renovation</span>
-            <span class="td-badge badge-hold">Buy &amp; Sell</span>
+            <span class="td-badge badge-flip">Wholesale Assignment</span>
+            <span class="td-badge badge-rehab">7-Day Close</span>
+            <span class="td-badge badge-hold">Zero Capital at Risk</span>
           </div>
         </div>
         <div class="asset-showcase-metrics">
           <div class="asset-showcase-metric">
-            <div class="asm-val">$185K</div>
-            <div class="asm-lbl">Acquisition</div>
+            <div class="asm-val">$100K</div>
+            <div class="asm-lbl">Sourced At</div>
           </div>
           <div class="asset-showcase-metric">
-            <div class="asm-val">$50K</div>
-            <div class="asm-lbl">Renovation</div>
+            <div class="asm-val">$120K</div>
+            <div class="asm-lbl">Assigned At</div>
           </div>
           <div class="asset-showcase-metric">
-            <div class="asm-val">$320K</div>
-            <div class="asm-lbl">ARV</div>
+            <div class="asm-val">$250K</div>
+            <div class="asm-lbl">Current Value</div>
           </div>
           <div class="asset-showcase-metric highlight">
-            <div class="asm-val">36%</div>
-            <div class="asm-lbl">Projected ROI</div>
+            <div class="asm-val">$20K</div>
+            <div class="asm-lbl">Assignment Fee</div>
           </div>
         </div>
       </div>
@@ -939,37 +958,39 @@ footer {
       </div>
     </div>
 
-    <!-- RECENT ACQUISITION PLACEHOLDER -->
-    <div class="asset-showcase asset-showcase-pending">
+    <!-- RECENT ACQUISITION -->
+    <div class="asset-showcase">
       <div class="asset-showcase-label">
-        <span class="asset-showcase-tag" style="color:var(--text-muted); border-color:rgba(138,158,140,0.25);">Recent Acquisition</span>
-        <div class="asset-showcase-line" style="background:rgba(138,158,140,0.15);"></div>
+        <span class="asset-showcase-tag">Multifamily — Recent Acquisition</span>
+        <div class="asset-showcase-line"></div>
       </div>
       <div class="asset-showcase-inner">
         <div class="asset-showcase-left">
-          <div class="asset-showcase-addr" style="color:var(--text-muted);">123 Main St &nbsp;<span style="font-size:0.7rem; letter-spacing:0.18em; font-family:'DM Sans',sans-serif; font-style:normal;">— Details Coming Soon</span></div>
-          <div class="asset-showcase-city" style="color:rgba(138,158,140,0.5);">Location TBD &nbsp;·&nbsp; Entity TBD</div>
-          <p class="asset-showcase-desc" style="color:rgba(138,158,140,0.5); font-style:italic;">Full deal details, financials, and executive summary to be added upon closing. This section will reflect acquisition price, renovation scope, projected returns, and strategy — consistent with the asset class showcases above.</p>
+          <div class="asset-showcase-addr">24631 40th St N</div>
+          <div class="asset-showcase-city">St. Petersburg, FL &nbsp;·&nbsp; Clear Capital Group LLC &nbsp;·&nbsp; Acquired February 2026</div>
+          <p class="asset-showcase-desc">8-unit multifamily acquired February 2026 in St. Petersburg at $645K — all-cash, no mortgage. The asset was stabilized at acquisition and is currently operating. Gross rent of $6,500/mo against $1,500/mo in operating expenses produces a $5,000/mo NOI ($60K annualized), reflecting a <strong style="color:var(--cream);">9.3% cap rate on cost</strong> — a rare find in today's compressed-cap-rate environment. Estimated current value of $850K represents $205K in projected equity from day one. Held under Clear Capital Group LLC.</p>
           <div class="asset-showcase-badges">
-            <span class="td-badge" style="background:rgba(138,158,140,0.1); color:var(--text-muted);">Pending</span>
+            <span class="td-badge badge-new">All-Cash Acquisition</span>
+            <span class="td-badge badge-rehab">Stabilized &amp; Operating</span>
+            <span class="td-badge badge-hold">8 Units</span>
           </div>
         </div>
         <div class="asset-showcase-metrics">
-          <div class="asset-showcase-metric" style="opacity:0.35;">
-            <div class="asm-val">—</div>
+          <div class="asset-showcase-metric">
+            <div class="asm-val">$645K</div>
             <div class="asm-lbl">Acquisition</div>
           </div>
-          <div class="asset-showcase-metric" style="opacity:0.35;">
-            <div class="asm-val">—</div>
-            <div class="asm-lbl">Strategy</div>
+          <div class="asset-showcase-metric">
+            <div class="asm-val">$850K</div>
+            <div class="asm-lbl">Est. Value</div>
           </div>
-          <div class="asset-showcase-metric" style="opacity:0.35;">
-            <div class="asm-val">—</div>
-            <div class="asm-lbl">ARV</div>
+          <div class="asset-showcase-metric">
+            <div class="asm-val">$60K</div>
+            <div class="asm-lbl">Annual NOI</div>
           </div>
-          <div class="asset-showcase-metric" style="opacity:0.35;">
-            <div class="asm-val">—</div>
-            <div class="asm-lbl">Projected ROI</div>
+          <div class="asset-showcase-metric highlight">
+            <div class="asm-val">9.3%</div>
+            <div class="asm-lbl">Cap Rate on Cost</div>
           </div>
         </div>
       </div>
