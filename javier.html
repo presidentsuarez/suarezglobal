@@ -529,6 +529,26 @@ footer {
   display: grid; grid-template-columns: 1fr 280px;
   gap: 3.5rem; align-items: start;
 }
+.asset-showcase-inner--photo {
+  grid-template-columns: 220px 1fr 280px;
+}
+.asset-showcase-photo {
+  width: 220px;
+  align-self: stretch;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.asset-showcase-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: contrast(1.04) brightness(0.95);
+  transition: transform 0.5s ease;
+}
+.asset-showcase:hover .asset-showcase-photo img {
+  transform: scale(1.04);
+}
 .asset-showcase-addr {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 1.5rem; font-weight: 300; color: var(--cream);
@@ -623,6 +643,7 @@ footer {
   .asset-showcase { padding: 2rem 1.5rem; }
   .asset-showcase-inner { grid-template-columns: 1fr !important; gap: 2rem; }
   .asset-showcase-metrics { grid-template-columns: repeat(2, 1fr) !important; }
+  .asset-showcase-photo { width: 100%; height: 220px; }
   /* Mission */
   .mission { padding: 5rem 1.5rem; }
   .mission-number { font-size: clamp(3.5rem, 15vw, 6rem); }
@@ -889,7 +910,10 @@ footer {
         <span class="asset-showcase-tag">Multifamily</span>
         <div class="asset-showcase-line"></div>
       </div>
-      <div class="asset-showcase-inner">
+      <div class="asset-showcase-inner asset-showcase-inner--photo">
+        <div class="asset-showcase-photo">
+          <img src="https://suarezglobal.com/north-marie.png" alt="6813–6823 N Marie Ave, Tampa FL">
+        </div>
         <div class="asset-showcase-left">
           <div class="asset-showcase-addr">6813–6823 N Marie Ave &nbsp;(6-Duplex Portfolio)</div>
           <div class="asset-showcase-city">Tampa, FL &nbsp;·&nbsp; Clear Skip LLC / North Marie Properties LLC</div>
@@ -926,7 +950,10 @@ footer {
         <span class="asset-showcase-tag" style="color:var(--gold-light); border-color:rgba(201,168,76,0.5);">Commercial — Mixed Use &nbsp;·&nbsp; Flagship Deal</span>
         <div class="asset-showcase-line"></div>
       </div>
-      <div class="asset-showcase-inner" style="grid-template-columns: 1fr 360px;">
+      <div class="asset-showcase-inner asset-showcase-inner--photo" style="grid-template-columns: 220px 1fr 360px;">
+        <div class="asset-showcase-photo">
+          <img src="https://suarezglobal.com/3118.png" alt="3118 Gulf to Bay Blvd, Clearwater FL">
+        </div>
         <div class="asset-showcase-left">
           <div class="asset-showcase-addr">3118 Gulf to Bay Blvd &nbsp;<em style="font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--gold-light);">53-Unit Mixed-Use</em></div>
           <div class="asset-showcase-city">Clearwater, FL &nbsp;·&nbsp; GTB Equity Group LLC — a Suarez Capital Company &nbsp;·&nbsp; 23,000 SF</div>
